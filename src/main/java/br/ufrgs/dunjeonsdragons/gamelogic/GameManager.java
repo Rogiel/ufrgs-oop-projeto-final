@@ -13,6 +13,9 @@ public class GameManager {
      */
     private List<GameEntity> entities;
 
+    /**
+     * The last time the "run" method was called
+     */
     private long lastUpdate;
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -28,11 +31,17 @@ public class GameManager {
     // -----------------------------------------------------------------------------------------------------------------
 
     public void addEntity(GameEntity entity) {
-        entities.add(entity);
+        if(!entities.add(entity)) {
+            return;
+        }
+        entity.didAddToGameManager(this);
     }
 
     public void removeEntity(GameEntity entity) {
-        entities.remove(entity);
+        if(!entities.remove(entity)) {
+            return;
+        }
+        entity.didRemoveFromGameManager(this);
     }
 
     // -----------------------------------------------------------------------------------------------------------------

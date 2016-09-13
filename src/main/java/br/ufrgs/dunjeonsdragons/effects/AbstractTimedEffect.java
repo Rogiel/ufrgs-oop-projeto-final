@@ -31,6 +31,9 @@ public abstract class AbstractTimedEffect implements Effect {
      */
     abstract void doApply(GameCharacter character, double elapsedTime);
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public EffectApplyState apply(GameCharacter character, double elapsedTime) {
         if(elapsed >= duration) {
