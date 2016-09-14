@@ -41,11 +41,13 @@
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
         <RaceRestriction>
-            <Race identifier="HUMAN" />
+            <Race identifier="HUMAN"/>
+            <Race identifier="ORC"/>
         </RaceRestriction>
 
         <Subclasses>
-            <Class identifier="MAGE" />
+            <Class identifier="BERSERK"/>
+            <Class identifier="PALADIN"/>
         </Subclasses>
     </Class>
 
@@ -55,6 +57,17 @@
         <VitalityPerLevel>0</VitalityPerLevel>
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>2</IntelligencePerLevel>
+
+        <RaceRestriction>
+            <Race identifier="HUMAN"/>
+            <Race identifier="ELF"/>
+            <Race identifier="ORC"/>
+        </RaceRestriction>
+
+        <Subclasses>
+            <Class identifier="SHAMAN"/>
+            <Class identifier="WIZARD"/>
+        </Subclasses>
     </Class>
 
     <Class identifier="ROGUE">
@@ -63,6 +76,16 @@
         <VitalityPerLevel>0</VitalityPerLevel>
         <DexterityPerLevel>1</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
+
+        <RaceRestriction>
+            <Race identifier="HUMAN"/>
+            <Race identifier="ELF"/>
+        </RaceRestriction>
+
+        <Subclasses>
+            <Class identifier="RANGER"/>
+            <Class identifier="ASSASSIN"/>
+        </Subclasses>
     </Class>
 
     <Class identifier="BERSERK">
@@ -87,6 +110,11 @@
         <VitalityPerLevel>0</VitalityPerLevel>
         <DexterityPerLevel>2</DexterityPerLevel>
         <IntelligencePerLevel>2</IntelligencePerLevel>
+
+        <RaceRestriction>
+            <Race identifier="HUMAN"/>
+            <Race identifier="ORC"/>
+        </RaceRestriction>
     </Class>
 
     <Class identifier="WIZARD">
@@ -95,6 +123,11 @@
         <VitalityPerLevel>0</VitalityPerLevel>
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>4</IntelligencePerLevel>
+
+        <RaceRestriction>
+            <Race identifier="HUMAN"/>
+            <Race identifier="ELF"/>
+        </RaceRestriction>
     </Class>
 
     <Class identifier="RANGER">
