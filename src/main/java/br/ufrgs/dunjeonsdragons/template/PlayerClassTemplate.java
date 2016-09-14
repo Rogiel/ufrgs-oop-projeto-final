@@ -1,7 +1,7 @@
 package br.ufrgs.dunjeonsdragons.template;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 /**
  * Created by Rogiel on 9/13/16.
@@ -43,6 +43,24 @@ public class PlayerClassTemplate extends Template {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    /**
+     * The race restrictions
+     */
+    @XmlElementWrapper(name = "RaceRestriction")
+    @XmlElement(name = "Race")
+    @XmlIDREF
+    private List<PlayerRaceTemplate> raceRestrictions;
+
+    /**
+     * The subclasses
+     */
+    @XmlElementWrapper(name = "Subclasses")
+    @XmlElement(name = "Class")
+    @XmlIDREF
+    private List<PlayerClassTemplate> subclasses;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     public String getName() {
         return name;
     }
@@ -63,4 +81,11 @@ public class PlayerClassTemplate extends Template {
         return intelligencePerLevel;
     }
 
+    public List<PlayerRaceTemplate> getRaceRestrictions() {
+        return raceRestrictions;
+    }
+
+    public List<PlayerClassTemplate> getSubclasses() {
+        return subclasses;
+    }
 }

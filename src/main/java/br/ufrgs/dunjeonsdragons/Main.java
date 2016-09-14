@@ -4,6 +4,7 @@ import br.ufrgs.dunjeonsdragons.effects.DamageEffect;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameEntity;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.model.GameCharacter;
+import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
 import br.ufrgs.dunjeonsdragons.template.loader.XMLTemplateLoader;
 
 import java.io.File;
@@ -14,7 +15,9 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         XMLTemplateLoader loader = new XMLTemplateLoader(Main.class.getClassLoader().getResource("GameData.xml"));
-        System.out.println(loader.load("HUMAN").getIdentifier());
+
+        PlayerClassTemplate template = (PlayerClassTemplate) loader.load("WARRIOR");
+        System.out.println(template.getRaceRestrictions().get(0).getIdentifier());
 
 //        Timer timer = new Timer();
 //

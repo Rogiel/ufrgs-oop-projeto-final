@@ -1,7 +1,6 @@
 <Data>
 
     <!--Races-->
-
     <Race identifier="HUMAN">
         <Name>Human</Name>
         <StrengthPerLevel>1</StrengthPerLevel>
@@ -37,7 +36,6 @@
     </Race>
 
     <!-- Classes -->
-
     <Class identifier="WARRIOR">
         <Name>Warrior</Name>
         <StrengthPerLevel>1</StrengthPerLevel>
@@ -46,13 +44,13 @@
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
         <RaceRestriction>
-            <Race identifier="HUMAN"/>
-            <Race identifier="ORC"/>
+            <Race>HUMAN</Race>
+            <Race>ORC</Race>
         </RaceRestriction>
 
         <Subclasses>
-            <Class identifier="BERSERK"/>
-            <Class identifier="PALADIN"/>
+            <Class>BERSERK</Class>
+            <Class>PALADIN</Class>
         </Subclasses>
     </Class>
     <Class identifier="MAGE">
@@ -63,14 +61,14 @@
         <IntelligencePerLevel>2</IntelligencePerLevel>
 
         <RaceRestriction>
-            <Race identifier="HUMAN"/>
-            <Race identifier="ELF"/>
-            <Race identifier="ORC"/>
+            <Race>HUMAN</Race>
+            <Race>ELF</Race>
+            <Race>ORC</Race>
         </RaceRestriction>
 
         <Subclasses>
-            <Class identifier="SHAMAN"/>
-            <Class identifier="WIZARD"/>
+            <Class>SHAMAN</Class>
+            <Class>WIZARD</Class>
         </Subclasses>
     </Class>
     <Class identifier="ROGUE">
@@ -81,13 +79,13 @@
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
         <RaceRestriction>
-            <Race identifier="HUMAN"/>
-            <Race identifier="ELF"/>
+            <Race>HUMAN</Race>
+            <Race>ELF</Race>
         </RaceRestriction>
 
         <Subclasses>
-            <Class identifier="RANGER"/>
-            <Class identifier="ASSASSIN"/>
+            <Class>RANGER</Class>
+            <Class>ASSASSIN</Class>
         </Subclasses>
     </Class>
 
@@ -114,8 +112,8 @@
         <IntelligencePerLevel>2</IntelligencePerLevel>
 
         <RaceRestriction>
-            <Race identifier="HUMAN"/>
-            <Race identifier="ORC"/>
+            <Race>HUMAN</Race>
+            <Race>ORC</Race>
         </RaceRestriction>
     </Class>
     <Class identifier="WIZARD">
@@ -126,8 +124,8 @@
         <IntelligencePerLevel>4</IntelligencePerLevel>
 
         <RaceRestriction>
-            <Race identifier="HUMAN"/>
-            <Race identifier="ELF"/>
+            <Race>HUMAN</Race>
+            <Race>ELF</Race>
         </RaceRestriction>
     </Class>
     <Class identifier="RANGER">
