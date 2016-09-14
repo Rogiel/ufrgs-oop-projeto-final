@@ -65,16 +65,32 @@ public class PlayerClassTemplate extends Template {
         return name;
     }
 
+    public int getStrength(int level) {
+        return strengthPerLevel * level;
+    }
+
     public int getStrengthPerLevel() {
         return strengthPerLevel;
+    }
+
+    public int getVitality(int level) {
+        return vitalityPerLevel * level;
     }
 
     public int getVitalityPerLevel() {
         return vitalityPerLevel;
     }
 
+    public int getDexterity(int level) {
+        return vitalityPerLevel * level;
+    }
+
     public int getDexterityPerLevel() {
         return dexterityPerLevel;
+    }
+
+    public int getIntelligence(int level) {
+        return intelligencePerLevel * level;
     }
 
     public int getIntelligencePerLevel() {

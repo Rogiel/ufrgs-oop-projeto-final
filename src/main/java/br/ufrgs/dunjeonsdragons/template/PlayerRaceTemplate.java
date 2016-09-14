@@ -71,12 +71,20 @@ public class PlayerRaceTemplate extends Template {
         return name;
     }
 
+    public int getStrength(int level) {
+        return strength + strengthPerLevel * level;
+    }
+
     public int getStrength() {
         return strength;
     }
 
     public int getStrengthPerLevel() {
         return strengthPerLevel;
+    }
+
+    public int getVitality(int level) {
+        return vitality + vitalityPerLevel * level;
     }
 
     public int getVitality() {
@@ -87,6 +95,9 @@ public class PlayerRaceTemplate extends Template {
         return vitalityPerLevel;
     }
 
+    public int getDexterity(int level) {
+        return dexterity + vitalityPerLevel * level;
+    }
     public int getDexterity() {
         return dexterity;
     }
@@ -95,6 +106,9 @@ public class PlayerRaceTemplate extends Template {
         return dexterityPerLevel;
     }
 
+    public int getIntelligence(int level) {
+        return intelligence + intelligencePerLevel * level;
+    }
     public int getIntelligence() {
         return intelligence;
     }

@@ -113,4 +113,5 @@ public class GameCharacter extends GameObject {
         }
         this.energy = energy;
     }
+
 }

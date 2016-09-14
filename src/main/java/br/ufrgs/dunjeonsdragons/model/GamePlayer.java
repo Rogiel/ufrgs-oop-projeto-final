@@ -35,6 +35,13 @@ public class GamePlayer extends GameCharacter {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public GamePlayer(PlayerRaceTemplate raceTemplate, PlayerClassTemplate classTemplate) {
+        this.raceTemplate = raceTemplate;
+        this.classTemplate = classTemplate;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     public void castSkill(GameSkill skill) {
         // TODO implement this
     }
@@ -65,21 +72,27 @@ public class GamePlayer extends GameCharacter {
         // TODO check for the maximum level
     }
 
+    public void setLevel(int level) {
+        // FIXME take this out
+        this.level = level;
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
 
-    public double getStrength() {
-        // TODO implement this
-        return 0;
+    public int getStrength() {
+        return raceTemplate.getStrength(level) + classTemplate.getStrength(level);
     }
 
-    public double getDexterity() {
-        // TODO implement this
-        return 0;
+    public int getVitality() {
+        return raceTemplate.getVitality(level) + classTemplate.getVitality(level);
     }
 
-    public double getIntelligence() {
-        // TODO implement this
-        return 0;
+    public int getDexterity() {
+        return raceTemplate.getDexterity(level) + classTemplate.getDexterity(level);
+    }
+
+    public int getIntelligence() {
+        return raceTemplate.getIntelligence(level) + classTemplate.getIntelligence(level);
     }
 
     // -----------------------------------------------------------------------------------------------------------------

@@ -4,7 +4,9 @@ import br.ufrgs.dunjeonsdragons.effects.DamageEffect;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameEntity;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.model.GameCharacter;
+import br.ufrgs.dunjeonsdragons.model.GamePlayer;
 import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
+import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 import br.ufrgs.dunjeonsdragons.template.loader.XMLTemplateLoader;
 
 import java.io.File;
@@ -18,6 +20,13 @@ public class Main {
 
         PlayerClassTemplate template = (PlayerClassTemplate) loader.load("WARRIOR");
         System.out.println(template.getRaceRestrictions().get(0).getIdentifier());
+
+        GamePlayer player = new GamePlayer(
+                (PlayerRaceTemplate) loader.load("HUMAN"),
+                (PlayerClassTemplate) loader.load("BERSERK")
+        );
+        player.setLevel(10);
+        System.out.println(player.getStrength());
 
 //        Timer timer = new Timer();
 //
