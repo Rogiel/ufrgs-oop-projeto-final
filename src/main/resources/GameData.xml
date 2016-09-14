@@ -39,6 +39,14 @@
         <VitalityPerLevel>1</VitalityPerLevel>
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
+
+        <RaceRestriction>
+            <Race identifier="HUMAN" />
+        </RaceRestriction>
+
+        <Subclasses>
+            <Class identifier="MAGE" />
+        </Subclasses>
     </Class>
 
     <Class identifier="MAGE">
