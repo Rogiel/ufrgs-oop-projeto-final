@@ -30,7 +30,7 @@ public class Main {
                 gameManager.update();
                 System.out.println(String.format("%.1f", aCharacter.getHealth()));
             }
-            
+
         }, frameMillis, frameMillis);
     }
 }

@@ -1,27 +1,108 @@
 <Data>
     <Race identifier="HUMAN">
         <Name>Human</Name>
+        <StrengthPerLevel>1</StrengthPerLevel>
+        <VitalityPerLevel>1</VitalityPerLevel>
+        <DexterityPerLevel>1</DexterityPerLevel>
+        <IntelligencePerLevel>1</IntelligencePerLevel>
+        <Strength>12</Strength>
+        <Vitality>12</Vitality>
+        <Dexterity>12</Dexterity>
+        <Intelligence>12</Intelligence>
+    </Race>
+    <Race identifier="ORC">
+        <Name>Orc</Name>
+        <StrengthPerLevel>2</StrengthPerLevel>
+        <VitalityPerLevel>0</VitalityPerLevel>
+        <DexterityPerLevel>1</DexterityPerLevel>
+        <IntelligencePerLevel>1</IntelligencePerLevel>
+        <Strength>15</Strength>
+        <Vitality>9</Vitality>
+        <Dexterity>9</Dexterity>
+        <Intelligence>15</Intelligence>
+    </Race>
+    <Race identifier="ELF">
+        <Name>Elf</Name>
+        <StrengthPerLevel>0</StrengthPerLevel>
+        <VitalityPerLevel>1</VitalityPerLevel>
+        <DexterityPerLevel>2</DexterityPerLevel>
+        <IntelligencePerLevel>1</IntelligencePerLevel>
+        <Strength>9</Strength>
+        <Vitality>15</Vitality>
+        <Dexterity>15</Dexterity>
+        <Intelligence>9</Intelligence>
     </Race>
 
-    <!--<Skills>-->
-        <!--<Skill name="..." type="DAMAGE" id="1">-->
-            <!--<Damage value="10" />-->
-        <!--</Skill>-->
-    <!--</Skills>-->
+    <Class identifier="WARRIOR">
+        <Name>Warrior</Name>
+        <StrengthPerLevel>1</StrengthPerLevel>
+        <VitalityPerLevel>1</VitalityPerLevel>
+        <DexterityPerLevel>0</DexterityPerLevel>
+        <IntelligencePerLevel>0</IntelligencePerLevel>
+    </Class>
 
-    <!--<Classes>-->
-        <!--<Class name="..." id="1">-->
-            <!--<Skills>-->
-                <!--<Skill id="1" />-->
-            <!--</Skills>-->
-        <!--</Class>-->
-    <!--</Classes>-->
+    <Class identifier="MAGE">
+        <Name>Mage</Name>
+        <StrengthPerLevel>0</StrengthPerLevel>
+        <VitalityPerLevel>0</VitalityPerLevel>
+        <DexterityPerLevel>0</DexterityPerLevel>
+        <IntelligencePerLevel>2</IntelligencePerLevel>
+    </Class>
 
-    <!--<Items>-->
-        <!--<Item name="Sword">-->
-            <!--<Races>-->
-                <!--<Race id="HUMAN" />-->
-            <!--</Races>-->
-        <!--</Item>-->
-    <!--</Items>-->
+    <Class identifier="ROGUE">
+        <Name>Rogue</Name>
+        <StrengthPerLevel>1</StrengthPerLevel>
+        <VitalityPerLevel>0</VitalityPerLevel>
+        <DexterityPerLevel>1</DexterityPerLevel>
+        <IntelligencePerLevel>0</IntelligencePerLevel>
+    </Class>
+
+    <Class identifier="BERSERK">
+        <Name>Berserk</Name>
+        <StrengthPerLevel>3</StrengthPerLevel>
+        <VitalityPerLevel>1</VitalityPerLevel>
+        <DexterityPerLevel>0</DexterityPerLevel>
+        <IntelligencePerLevel>0</IntelligencePerLevel>
+    </Class>
+
+    <Class identifier="PALADIN">
+        <Name>Paladin</Name>
+        <StrengthPerLevel>1</StrengthPerLevel>
+        <VitalityPerLevel>3</VitalityPerLevel>
+        <DexterityPerLevel>0</DexterityPerLevel>
+        <IntelligencePerLevel>0</IntelligencePerLevel>
+    </Class>
+
+    <Class identifier="SHAMAN">
+        <Name>Shaman</Name>
+        <StrengthPerLevel>0</StrengthPerLevel>
+        <VitalityPerLevel>0</VitalityPerLevel>
+        <DexterityPerLevel>2</DexterityPerLevel>
+        <IntelligencePerLevel>2</IntelligencePerLevel>
+    </Class>
+
+    <Class identifier="WIZARD">
+        <Name>Wizard</Name>
+        <StrengthPerLevel>0</StrengthPerLevel>
+        <VitalityPerLevel>0</VitalityPerLevel>
+        <DexterityPerLevel>0</DexterityPerLevel>
+        <IntelligencePerLevel>4</IntelligencePerLevel>
+    </Class>
+
+    <Class identifier="RANGER">
+        <Name>Ranger</Name>
+        <StrengthPerLevel>1</StrengthPerLevel>
+        <VitalityPerLevel>0</VitalityPerLevel>
+        <DexterityPerLevel>3</DexterityPerLevel>
+        <IntelligencePerLevel>0</IntelligencePerLevel>
+    </Class>
+
+    <Class identifier="ASSASSIN">
+        <Name>Assassin</Name>
+        <StrengthPerLevel>3</StrengthPerLevel>
+        <VitalityPerLevel>0</VitalityPerLevel>
+        <DexterityPerLevel>1</DexterityPerLevel>
+        <IntelligencePerLevel>0</IntelligencePerLevel>
+    </Class>
+
 </Data>
