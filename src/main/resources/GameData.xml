@@ -1,0 +1,27 @@
+<Data>
+    <Race identifier="HUMAN">
+        <Name>Human</Name>
+    </Race>
+
+    <!--<Skills>-->
+        <!--<Skill name="..." type="DAMAGE" id="1">-->
+            <!--<Damage value="10" />-->
+        <!--</Skill>-->
+    <!--</Skills>-->
+
+    <!--<Classes>-->
+        <!--<Class name="..." id="1">-->
+            <!--<Skills>-->
+                <!--<Skill id="1" />-->
+            <!--</Skills>-->
+        <!--</Class>-->
+    <!--</Classes>-->
+
+    <!--<Items>-->
+        <!--<Item name="Sword">-->
+            <!--<Races>-->
+                <!--<Race id="HUMAN" />-->
+            <!--</Races>-->
+        <!--</Item>-->
+    <!--</Items>-->
+</Data>
