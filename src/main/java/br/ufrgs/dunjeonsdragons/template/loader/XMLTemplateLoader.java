@@ -20,6 +20,9 @@ import java.util.Map;
  */
 public class XMLTemplateLoader implements TemplateLoader {
 
+    /**
+     * The URL to the data file
+     */
     private URL dataFile;
 
     /**
@@ -36,14 +39,43 @@ public class XMLTemplateLoader implements TemplateLoader {
         this.dataFile = dataFile;
     }
 
+    @Override
+    public Template load(String identifier) {
+        if(templates == null) {
+            loadXML();
+        }
+        return templates.get(identifier);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * The GameData.xml root element
+     */
+    @XmlRootElement(name = "Data")
+    private static class GameDataRoot {
+        /**
+         * A list containing all loaded templates
+         */
+        @XmlElements({
+                @XmlElement(name = "Race", type = PlayerRaceTemplate.class),
+                @XmlElement(name = "Class", type = PlayerClassTemplate.class),
+                @XmlElement(name = "Monster", type = MonsterTemplate.class),
+        })
+        List<Template> templates;
+    }
+
+    /**
+     * Loads the XML file and maps each template into a hash map
+     */
     private void loadXML() {
         templates = new HashMap<>();
         try {
-            JAXBContext context = JAXBContext.newInstance(TemplateRoot.class);
+            JAXBContext context = JAXBContext.newInstance(GameDataRoot.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
             ClassLoader classLoader = getClass().getClassLoader();
-            TemplateRoot root = (TemplateRoot) unmarshaller.unmarshal(dataFile);
+            GameDataRoot root = (GameDataRoot) unmarshaller.unmarshal(dataFile);
 
             for (Template t : root.templates) {
                 templates.put(t.getIdentifier(), t);
@@ -51,23 +83,6 @@ public class XMLTemplateLoader implements TemplateLoader {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-    }
-
-    @XmlRootElement(name = "Data")
-    private static class TemplateRoot {
-        @XmlElements({
-                @XmlElement(name = "Race", type = PlayerRaceTemplate.class),
-                @XmlElement(name = "Class", type = PlayerClassTemplate.class)
-        })
-        List<Template> templates;
-    }
-
-    @Override
-    public Template load(String identifier) {
-        if(templates == null) {
-            loadXML();
-        }
-        return templates.get(identifier);
     }
 
 }

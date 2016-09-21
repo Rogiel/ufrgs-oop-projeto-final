@@ -16,15 +16,9 @@ import java.util.TimerTask;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        XMLTemplateLoader loader = new XMLTemplateLoader(Main.class.getClassLoader().getResource("GameData.xml"));
+        GameEntityFactory factory = new GameEntityFactory();
 
-        PlayerClassTemplate template = (PlayerClassTemplate) loader.load("WARRIOR");
-        System.out.println(template.getRaceRestrictions().get(0).getIdentifier());
-
-        GamePlayer player = new GamePlayer(
-                (PlayerRaceTemplate) loader.load("HUMAN"),
-                (PlayerClassTemplate) loader.load("BERSERK")
-        );
+        GamePlayer player = factory.createPlayer("HUMAN", "BERSERK");
         player.setLevel(10);
         System.out.println(player.getStrength());
 
