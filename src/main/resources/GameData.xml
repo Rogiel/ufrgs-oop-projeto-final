@@ -185,4 +185,28 @@
         </RaceRestriction>
     </Class>
 
+    <!--Monsters-->
+    <Name>Golem</Name>
+    <StrengthPerLevel>1</StrengthPerLevel>
+    <VitalityPerLevel>6</VitalityPerLevel>
+    <DexterityPerLevel>1</DexterityPerLevel>
+    <IntelligencePerLevel>0</IntelligencePerLevel>
+
+    <Name>The Black-Eyed Dire Pig</Name>
+    <StrengthPerLevel>6</StrengthPerLevel>
+    <VitalityPerLevel>1</VitalityPerLevel>
+    <DexterityPerLevel>1</DexterityPerLevel>
+    <IntelligencePerLevel>0</IntelligencePerLevel>
+
+    <Name>Wraith</Name>
+    <StrengthPerLevel>2</StrengthPerLevel>
+    <VitalityPerLevel>2</VitalityPerLevel>
+    <DexterityPerLevel>2</DexterityPerLevel>
+    <IntelligencePerLevel>2</IntelligencePerLevel>
+
+    <Name>Boss</Name>
+    <StrengthPerLevel>4</StrengthPerLevel>
+    <VitalityPerLevel>3</VitalityPerLevel>
+    <DexterityPerLevel>2</DexterityPerLevel>
+    <IntelligencePerLevel>4</IntelligencePerLevel>
 </Data>
