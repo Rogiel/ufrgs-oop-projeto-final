@@ -1,5 +1,28 @@
 <Data>
 
+
+    <Map identifier="DEFAULT_MAP">
+        <Level identifier="FIRST_LEVEL" name="The First Level">
+            <Monster>MONSTER_1</Monster>
+        </Level>
+
+        <Level identifier="SECOND_LEVEL" name="The Second Level">
+            <Monster>MONSTER_1</Monster>
+        </Level>
+    </Map>
+
+    <Monster identifier="MONSTER_1">
+        <Name>Test Monster</Name>
+    </Monster>
+
+    <Skill identifier="ATTACK" >
+        <Effects>
+            <Effect ClassName="br.ufrgs.dunjeonsdragons.effects.DamageEffect">
+
+            </Effect>
+        </Effects>
+    </Skill>
+
     <!--Races-->
     <Race identifier="HUMAN">
         <Name>Human</Name>

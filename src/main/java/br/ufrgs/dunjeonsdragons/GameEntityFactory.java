@@ -1,7 +1,10 @@
 package br.ufrgs.dunjeonsdragons;
 
+import br.ufrgs.dunjeonsdragons.model.GameMap;
 import br.ufrgs.dunjeonsdragons.model.GameMonster;
 import br.ufrgs.dunjeonsdragons.model.GamePlayer;
+import br.ufrgs.dunjeonsdragons.template.MapTemplate;
+import br.ufrgs.dunjeonsdragons.template.MonsterTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 import br.ufrgs.dunjeonsdragons.template.loader.TemplateLoader;
@@ -15,7 +18,7 @@ public class GameEntityFactory {
     /**
      * The template loader instance
      */
-    private TemplateLoader loader = new XMLTemplateLoader(Main.class.getClassLoader().getResource("GameData.xml"));
+    public TemplateLoader loader = new XMLTemplateLoader(Main.class.getClassLoader().getResource("GameData.xml"));
 
     /**
      * Creates a new player object from the given classIdentifier template identifier
@@ -37,7 +40,23 @@ public class GameEntityFactory {
      * @return a newly created GameMonster object
      */
     public GameMonster createMonster(String monsterTemplateIdentifier) {
-        return new GameMonster();
+        return new GameMonster(
+                (MonsterTemplate) loader.load(monsterTemplateIdentifier)
+        );
+    }
+
+    /**
+     * Creates a new map object from the given map template identifier
+     * and player instance
+     *
+     * @param mapTemplateIdentifier the map template identifier
+     * @return a newly created GameMap object
+     */
+    public GameMap createMap(String mapTemplateIdentifier, final GamePlayer player) {
+        return new GameMap(
+                (MapTemplate) loader.load(mapTemplateIdentifier),
+                player
+        );
     }
 
 }

@@ -1,7 +1,9 @@
 package br.ufrgs.dunjeonsdragons.gamelogic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Rogiel on 9/13/16.
@@ -11,7 +13,7 @@ public class GameManager {
     /**
      * A list entities currently managed by the game
      */
-    private List<GameEntity> entities;
+    private Map<String, GameEntity> entities;
 
     /**
      * The last time the "run" method was called
@@ -24,24 +26,29 @@ public class GameManager {
      * Creates a new GameManager instance
      */
     public GameManager() {
-        entities = new ArrayList<>();
+        entities = new HashMap<>();
         lastUpdate = System.currentTimeMillis();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void addEntity(GameEntity entity) {
-        if(!entities.add(entity)) {
+    public void addEntity(String name, GameEntity entity) {
+        if(entities.put(name, entity) != null) {
             return;
         }
         entity.didAddToGameManager(this);
     }
 
-    public void removeEntity(GameEntity entity) {
-        if(!entities.remove(entity)) {
+    public void removeEntity(String name) {
+        final GameEntity removed = entities.remove(name);
+        if(removed == null) {
             return;
         }
-        entity.didRemoveFromGameManager(this);
+        removed.didRemoveFromGameManager(this);
+    }
+
+    public GameEntity getEntity(String name) {
+        return entities.get(name);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -51,7 +58,7 @@ public class GameManager {
         long delta = now - lastUpdate;
         lastUpdate = now;
 
-        for(GameEntity entity : entities) {
+        for(GameEntity entity : entities.values()) {
             entity.update(delta / 1000.0);
         }
     }

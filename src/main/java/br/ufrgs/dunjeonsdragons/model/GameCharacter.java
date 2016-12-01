@@ -2,10 +2,9 @@ package br.ufrgs.dunjeonsdragons.model;
 
 import br.ufrgs.dunjeonsdragons.effects.Effect;
 import br.ufrgs.dunjeonsdragons.effects.EffectApplyState;
-import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
-import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -26,6 +25,13 @@ public class GameCharacter extends GameObject {
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
+     * The characters target
+     */
+    protected GameCharacter target;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
      * The amount of health on the character
      */
     private double health;
@@ -34,6 +40,11 @@ public class GameCharacter extends GameObject {
      * The amount of energy on the character
      */
     private double energy;
+
+    /**
+     * A flag indicating if the target is dead
+     */
+    private boolean dead = false;
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -45,8 +56,34 @@ public class GameCharacter extends GameObject {
     // -----------------------------------------------------------------------------------------------------------------
 
     public void castSkill(GameSkill skill) {
-        // TODO implement this
+        if (!this.skills.contains(skill)) {
+            throw new RuntimeException();
+            // TODO throw a proper error
+        }
+
+        skill.cast(this, Collections.singletonList(target));
     }
+
+    public void attack() {
+        if (target == null) {
+            throw new RuntimeException("No target");
+            // TODO proper exception
+        }
+
+        // take life out of the target
+        final double targetHealth = target.getHealth();
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+    public GameCharacter getTarget() {
+        return target;
+    }
+
+    public void setTarget(GameCharacter target) {
+        this.target = target;
+    }
+
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -57,9 +94,9 @@ public class GameCharacter extends GameObject {
         List<Effect> effectsToBeRemoved = new ArrayList<>();
 
         // apply the effects
-        for(Effect effect : activeEffects) {
+        for (Effect effect : activeEffects) {
             EffectApplyState state = effect.apply(this, elapsedTime);
-            if(state == EffectApplyState.EXPIRE_EFFECT) {
+            if (state == EffectApplyState.EXPIRE_EFFECT) {
                 effectsToBeRemoved.add(effect);
             }
         }
@@ -97,8 +134,12 @@ public class GameCharacter extends GameObject {
     }
 
     public void setHealth(double health) {
-        if(health < 0) {
+        if(isDead()) {
+            return;
+        }
+        if (health <= 0) {
             health = 0;
+            dead = true;
         }
         this.health = health;
     }
@@ -108,10 +149,14 @@ public class GameCharacter extends GameObject {
     }
 
     public void setEnergy(double energy) {
-        if(energy < 0) {
+        if (energy < 0) {
             energy = 0;
         }
         this.energy = energy;
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 
 }

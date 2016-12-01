@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class GamePlayer extends GameCharacter {
 
+    public static final String DEFAULT_PLAYER_ENTITY_NAME = "GamePlayer";
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     /**
      * A template for the player class
      */
@@ -45,6 +49,19 @@ public class GamePlayer extends GameCharacter {
     public void castSkill(GameSkill skill) {
         // TODO implement this
     }
+
+    public void attack() {
+        if (target == null) {
+            throw new RuntimeException("No target");
+            // TODO proper exception
+        }
+
+        // take life out of the target
+        final double targetHealth = target.getHealth();
+        target.setHealth(targetHealth - getStrength());
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
 
     public void transferClass(PlayerClassTemplate newClassTemplate) {
         // TODO implement a check to assert if the player can trasnfer classes
