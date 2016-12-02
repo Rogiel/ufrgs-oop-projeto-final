@@ -28,6 +28,11 @@ public class GamePlayer extends GameCharacter {
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
+     * The character name
+     */
+    private String name;
+
+    /**
      * The player level
      */
     private int level;
@@ -140,5 +145,16 @@ public class GamePlayer extends GameCharacter {
      */
     public int getExperience() {
         return experience;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

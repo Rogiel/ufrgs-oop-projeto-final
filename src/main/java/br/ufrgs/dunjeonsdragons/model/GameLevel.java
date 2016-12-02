@@ -43,7 +43,7 @@ public class GameLevel extends GameObject {
     // -----------------------------------------------------------------------------------------------------------------
 
     @Override
-    public void update(double elapsedTime) {
+    public void performTurn(long turn) {
         if (monster.isDead()) {
             complete = true;
         }

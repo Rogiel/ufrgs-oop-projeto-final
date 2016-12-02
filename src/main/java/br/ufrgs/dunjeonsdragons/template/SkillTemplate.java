@@ -18,20 +18,4 @@ public class SkillTemplate extends Template {
     @XmlElement(name = "Name")
     private String name;
 
-    /**
-     * A list of all effects available for the skill
-     */
-    @XmlElementWrapper(name = "Effects")
-    @XmlElements({
-            @XmlElement(name = "Effect", type = EffectTemplate.class)
-    })
-    private List<EffectTemplate> effects;
-
-    public String getName() {
-        return name;
-    }
-
-    public List<EffectTemplate> getEffects() {
-        return effects;
-    }
 }

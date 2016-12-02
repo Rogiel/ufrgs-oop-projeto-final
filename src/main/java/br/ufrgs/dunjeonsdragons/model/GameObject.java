@@ -14,7 +14,7 @@ public abstract class GameObject implements GameEntity {
     protected GameManager gameManager;
 
     @Override
-    public void update(double elapsedTime) {
+    public void performTurn(long turn) {
         // NO OP
     }
 

@@ -1,7 +1,5 @@
 package br.ufrgs.dunjeonsdragons.template;
 
-import br.ufrgs.dunjeonsdragons.effects.Effect;
-
 import javax.xml.bind.annotation.*;
 import java.util.List;
 

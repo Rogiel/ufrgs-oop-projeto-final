@@ -1,7 +1,5 @@
 package br.ufrgs.dunjeonsdragons.template;
 
-import br.ufrgs.dunjeonsdragons.effects.Effect;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -19,7 +17,7 @@ public class MapTemplate extends Template {
     @XmlElements({
             @XmlElement(name = "Level", type = LevelTemplate.class)
     })
-    List<LevelTemplate> levels;
+    private List<LevelTemplate> levels;
 
     public List<LevelTemplate> getLevels() {
         return levels;

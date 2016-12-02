@@ -7,10 +7,25 @@ import br.ufrgs.dunjeonsdragons.template.MonsterTemplate;
  */
 public class GameMonster extends GameCharacter {
 
+    /**
+     * The monster template
+     */
     private final MonsterTemplate template;
 
+    /**
+     * Create a new monster instance
+     *
+     * @param template create the monster from the given template
+     */
     public GameMonster(final MonsterTemplate template) {
         this.template = template;
+    }
+
+    /**
+     * @return the monster name
+     */
+    public String getName() {
+        return template.getName();
     }
 
 }

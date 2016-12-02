@@ -1,8 +1,5 @@
 package br.ufrgs.dunjeonsdragons.model;
 
-import br.ufrgs.dunjeonsdragons.effects.Effect;
-import br.ufrgs.dunjeonsdragons.effects.EffectApplyState;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,11 +13,6 @@ public class GameCharacter extends GameObject {
      * A list of the currently active skills for the player
      */
     private List<GameSkill> skills;
-
-    /**
-     * A list containing all active effects on the character
-     */
-    private List<Effect> activeEffects;
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -48,9 +40,11 @@ public class GameCharacter extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Create a new game character
+     */
     public GameCharacter() {
         skills = new ArrayList<>();
-        activeEffects = new ArrayList<>();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -72,6 +66,7 @@ public class GameCharacter extends GameObject {
 
         // take life out of the target
         final double targetHealth = target.getHealth();
+        // TODO perform character attack
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -88,43 +83,8 @@ public class GameCharacter extends GameObject {
     // -----------------------------------------------------------------------------------------------------------------
 
     @Override
-    public void update(double elapsedTime) {
-        super.update(elapsedTime);
-
-        List<Effect> effectsToBeRemoved = new ArrayList<>();
-
-        // apply the effects
-        for (Effect effect : activeEffects) {
-            EffectApplyState state = effect.apply(this, elapsedTime);
-            if (state == EffectApplyState.EXPIRE_EFFECT) {
-                effectsToBeRemoved.add(effect);
-            }
-        }
-
-        // now remove the effects. We remove them after applying to keep a fixed view for all other effects
-        activeEffects.removeAll(effectsToBeRemoved);
-    }
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    public List<Effect> getActiveEffects() {
-        return activeEffects;
-    }
-
-    public void addEffect(Effect effect) {
-        activeEffects.add(effect);
-    }
-
-    public void addEffects(List<Effect> effects) {
-        activeEffects.addAll(effects);
-    }
-
-    public void removeEffect(Effect effect) {
-        activeEffects.remove(effect);
-    }
-
-    public void removeEffects(List<Effect> effects) {
-        activeEffects.removeAll(effects);
+    public void performTurn(long turn) {
+        super.performTurn(turn);
     }
 
     // -----------------------------------------------------------------------------------------------------------------

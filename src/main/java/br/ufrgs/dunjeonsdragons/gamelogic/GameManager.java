@@ -1,5 +1,8 @@
 package br.ufrgs.dunjeonsdragons.gamelogic;
 
+import br.ufrgs.dunjeonsdragons.event.GameEvent;
+import br.ufrgs.dunjeonsdragons.event.GameEventListener;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +19,14 @@ public class GameManager {
     private Map<String, GameEntity> entities;
 
     /**
-     * The last time the "run" method was called
+     * A list of active game event listeners
      */
-    private long lastUpdate;
+    private List<GameEventListener> eventListeners = new ArrayList<>();
+
+    /**
+     * The current game turn
+     */
+    private long turn;
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -27,7 +35,7 @@ public class GameManager {
      */
     public GameManager() {
         entities = new HashMap<>();
-        lastUpdate = System.currentTimeMillis();
+        turn = 0;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -53,13 +61,27 @@ public class GameManager {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void update() {
-        long now = System.currentTimeMillis();
-        long delta = now - lastUpdate;
-        lastUpdate = now;
+    public void addEventListener(GameEventListener eventListener) {
+        this.eventListeners.add(eventListener);
+    }
 
-        for(GameEntity entity : entities.values()) {
-            entity.update(delta / 1000.0);
+    public void removeEventListener(GameEventListener eventListener) {
+        this.eventListeners.remove(eventListener);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+    public void performTurn() {
+        final List<GameEntity> entities = new ArrayList<>(this.entities.values());
+        for(GameEntity entity : entities) {
+            entity.performTurn(turn);
+        }
+        turn++;
+    }
+
+    public void triggerEvent(final GameEvent event) {
+        for(final GameEventListener listener : eventListeners) {
+            listener.onGameEvent(event);
         }
     }
 

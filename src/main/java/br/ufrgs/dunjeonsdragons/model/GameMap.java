@@ -1,8 +1,12 @@
 package br.ufrgs.dunjeonsdragons.model;
 
+import br.ufrgs.dunjeonsdragons.event.GameEvent;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.template.LevelTemplate;
 import br.ufrgs.dunjeonsdragons.template.MapTemplate;
+import br.ufrgs.dunjeonsdragons.ui.GameUIController;
+
+import java.io.IOException;
 
 /**
  * Created by Rogiel on 12/1/16.
@@ -25,6 +29,16 @@ public class GameMap extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public enum State {
+        RUNNING,
+        VICTORY,
+        DEFEAT
+    }
+
+    private State state = State.RUNNING;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     /**
      * The player instance
      */
@@ -37,6 +51,14 @@ public class GameMap extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    private GameUIController uiController;
+
+    /**
+     * Create a new game map instance
+     *
+     * @param template the map template
+     * @param player the human player on the map
+     */
     public GameMap(final MapTemplate template, final GamePlayer player) {
         this.template = template;
         this.player = player;
@@ -44,17 +66,38 @@ public class GameMap extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    @Override
+    public void performTurn(long turn) {
+        try {
+            uiController.handleUserInput();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        gameManager.triggerEvent(new GameEvent());
+
+        if(player.isDead()) {
+            state = State.DEFEAT;
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Advances the map to the next level
+     */
     public void nextLevel() {
         // remove this level from the game manager
         gameManager.removeEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+        currentLevelIndex++;
 
         // create the next level
-        if (template.getLevels().size() >= currentLevelIndex) {
-            // TODO win!!!
+        if (currentLevelIndex >= template.getLevels().size()) {
+            state = State.VICTORY;
             return;
         }
 
-        final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex++);
+        final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
         final GameLevel level = new GameLevel(levelTemplate, player);
 
         // add the next level entity
@@ -69,6 +112,8 @@ public class GameMap extends GameObject {
     public void didAddToGameManager(GameManager gameManager) {
         super.didAddToGameManager(gameManager);
 
+        uiController = new GameUIController(gameManager);
+
         final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
         final GameLevel level = new GameLevel(levelTemplate, player);
         gameManager.addEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME, level);
@@ -79,11 +124,22 @@ public class GameMap extends GameObject {
     public void didRemoveFromGameManager(GameManager gameManager) {
         super.didRemoveFromGameManager(gameManager);
         gameManager.removeEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+        uiController = null;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    /**
+     * @return the level being played
+     */
     public GameLevel getCurrentLevel() {
         return currentLevel;
+    }
+
+    /**
+     * @return the game state
+     */
+    public State getState() {
+        return state;
     }
 }

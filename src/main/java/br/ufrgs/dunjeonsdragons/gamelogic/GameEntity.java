@@ -8,9 +8,9 @@ public interface GameEntity {
     /**
      * Executes the game loop for this entity.
      *
-     * @param elapsedTime the amount of time elapsed since the last loop
+     * @param turn the turn number being simulated
      */
-    void update(double elapsedTime);
+    void performTurn(long turn);
 
     /**
      * A event called whenever a entity is added to a game manager

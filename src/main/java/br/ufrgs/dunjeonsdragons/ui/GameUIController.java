@@ -1,10 +1,7 @@
 package br.ufrgs.dunjeonsdragons.ui;
 
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
-import br.ufrgs.dunjeonsdragons.model.GameCharacter;
-import br.ufrgs.dunjeonsdragons.model.GameLevel;
-import br.ufrgs.dunjeonsdragons.model.GameMap;
-import br.ufrgs.dunjeonsdragons.model.GamePlayer;
+import br.ufrgs.dunjeonsdragons.model.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -44,34 +41,53 @@ public class GameUIController {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void start() throws IOException {
-        while (true) {
-            final String commandLine = reader.readLine();
-            final StringTokenizer tokenizer = new StringTokenizer(commandLine);
+    public enum UserInputActionResult {
+        IGNORED,
+        WON,
+        LOST,
+        NORMAL
+    }
 
-            final String command = tokenizer.nextToken();
-            switch (command) {
-                case ATTACK_COMMAND:
-                    handleAttack(tokenizer);
-                    break;
-                case SPELL_COMMAND:
-                    handleSpell(tokenizer);
-                    break;
-                case NEXT_LEVEL_COMMAND:
-                    nextLevel(tokenizer);
-                    break;
-                case STATUS_COMMAND:
-                    handleStatus(tokenizer);
-                    break;
-
-                case EXIT_COMMAND:
-                    return;
-
-                default:
-                    System.err.println("Unknown command: " + command);
-                    break;
-            }
+    public boolean handleUserInput() throws IOException {
+        final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
+        if (map != null && map.getState() != GameMap.State.RUNNING) {
+            System.out.println("Game over.");
+            return true;
         }
+
+        final String commandLine = reader.readLine();
+        final StringTokenizer tokenizer = new StringTokenizer(commandLine);
+
+        final String command = tokenizer.nextToken();
+        switch (command) {
+            case ATTACK_COMMAND:
+                handleAttack(tokenizer);
+                gameManager.performTurn();
+
+                break;
+            case SPELL_COMMAND:
+                handleSpell(tokenizer);
+                gameManager.performTurn();
+
+                break;
+            case NEXT_LEVEL_COMMAND:
+                nextLevel(tokenizer);
+//                gameManager.performTurn();
+
+                break;
+            case STATUS_COMMAND:
+                handleStatus(tokenizer);
+                break;
+
+            case EXIT_COMMAND:
+                return false;
+
+            default:
+                System.err.println("Unknown command: " + command);
+                break;
+        }
+
+        return false;
     }
 
     private void handleAttack(final StringTokenizer tokenizer) {
@@ -90,7 +106,7 @@ public class GameUIController {
 
     private void nextLevel(final StringTokenizer tokenizer) {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
-        if(!map.getCurrentLevel().isComplete()) {
+        if (!map.getCurrentLevel().isComplete()) {
             System.err.println("Current level is not complete.");
             return;
         }
@@ -98,15 +114,15 @@ public class GameUIController {
     }
 
     private void handleStatus(final StringTokenizer tokenizer) {
-        final GameCharacter character = (GameCharacter) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        System.out.println("Character:");
+        final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        System.out.println("Character: " + character.getName());
         System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(character.getHealth()));
         System.out.println("\tEnergy: " + NumberFormat.getNumberInstance().format(character.getEnergy()));
 
         final GameLevel level = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
-        if(level != null) {
-            final GameCharacter monster = level.getMonster();
-            System.out.println("Monster:");
+        if (level != null) {
+            final GameMonster monster = level.getMonster();
+            System.out.println("Monster: " + monster.getName());
             if (monster == null) {
                 System.out.println("\tNo monster on current level");
             } else {
