@@ -9,6 +9,8 @@ import br.ufrgs.dunjeonsdragons.model.GamePlayer;
 import br.ufrgs.dunjeonsdragons.template.ExperienceTableEntry;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 
 /**
@@ -30,6 +32,7 @@ public class GameWindow {
     private JProgressBar playerHpBar;
     private JProgressBar monsterHpBar;
     private JProgressBar gameProgressBar;
+    private JButton resetMapButton;
 
     private final GameManager gameManager;
 
@@ -40,6 +43,7 @@ public class GameWindow {
         combatButton.addActionListener(e -> handleCombat());
 //        nextLevelButton.addActionListener(e -> nextLevel());
         nextMapButton.addActionListener(e -> nextMap());
+        resetMapButton.addActionListener(e -> resetMap());
 
         updateUI();
     }
