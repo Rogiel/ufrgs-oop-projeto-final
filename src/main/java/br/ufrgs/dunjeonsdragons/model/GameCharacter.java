@@ -47,7 +47,7 @@ public abstract class GameCharacter extends GameObject {
 
         // take life out of the target
         final double targetHealth = target.getHealth();
-        // TODO perform character attack
+        target.setHealth(targetHealth - getDamage());
     }
 
     // -----------------------------------------------------------------------------------------------------------------

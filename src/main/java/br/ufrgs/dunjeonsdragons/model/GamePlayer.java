@@ -67,17 +67,6 @@ public class GamePlayer extends GameCharacter {
         }
     }
 
-    public void attack() {
-        if (target == null) {
-            throw new RuntimeException("No target");
-            // TODO proper exception
-        }
-
-        // take life out of the target
-        final double targetHealth = target.getHealth();
-        target.setHealth(targetHealth - getDamage());
-    }
-
     // -----------------------------------------------------------------------------------------------------------------
 
     public void transferClass(PlayerClassTemplate newClassTemplate) {
