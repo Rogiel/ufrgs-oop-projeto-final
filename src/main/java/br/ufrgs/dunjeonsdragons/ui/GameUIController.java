@@ -19,6 +19,7 @@ public class GameUIController {
     private static final String STATUS_COMMAND = "status";
     private static final String EXIT_COMMAND = "exit";
     private static final String SHOW_EXPERIENCE = "experience";
+    private static final String COMBAT = "combat";
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -50,7 +51,8 @@ public class GameUIController {
         final String commandLine = reader.readLine();
         final StringTokenizer tokenizer = new StringTokenizer(commandLine);
 
-        final String command = tokenizer.nextToken();
+        final String command = tokenizer.nextToken().toLowerCase();
+
         switch (command) {
             case ATTACK_COMMAND:
                 handleAttack(tokenizer);
@@ -70,6 +72,10 @@ public class GameUIController {
             case SHOW_EXPERIENCE:
                 handleExperience(tokenizer);
 
+            case COMBAT:
+                handleCombat(tokenizer);
+                break;
+
             case EXIT_COMMAND:
                 return false;
 
@@ -79,6 +85,10 @@ public class GameUIController {
         }
 
         return false;
+    }
+
+    private void handleCombat(StringTokenizer tokenizer) {
+        //TODO implementar attack + status enquanto vida !=0
     }
 
     private void handleAttack(final StringTokenizer tokenizer) {
