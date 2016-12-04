@@ -45,10 +45,7 @@ public class GameWindow {
     private JLabel maxTowerLevel;
     private JScrollPane logScrollPane;
 
-
     private final GameManager gameManager;
-
-    private PrintStream originalOutputStream;
 
     public GameWindow(final GameManager gameManager) {
         this.gameManager = gameManager;
@@ -60,7 +57,7 @@ public class GameWindow {
         resetMapButton.addActionListener(e -> resetMap());
         transferClassButton.addActionListener(e -> executeClassTransfer());
 
-//        originalOutputStream = System.out;
+        // hooks into the "System.out" stream to redirect the output to the GUI console
         PrintStream outputStream = new PrintStream(System.out) {
             @Override
             public void println(String x) {
