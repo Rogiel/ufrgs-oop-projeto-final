@@ -68,7 +68,7 @@ public class GameUIController {
                 break;
 
             case SHOW_EXPERIENCE:
-                return false;
+                handleExperience(tokenizer);
 
             case EXIT_COMMAND:
                 return false;
@@ -114,4 +114,9 @@ public class GameUIController {
         }
     }
 
+    private void handleExperience(final StringTokenizer tokenizer) {
+        final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
+        System.out.println("\tExperience: " + NumberFormat.getNumberInstance().format(character.getExperience()));
+    }
 }
