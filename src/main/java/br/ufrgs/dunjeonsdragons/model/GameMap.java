@@ -185,6 +185,10 @@ public class GameMap extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public long getMapLevel() {
+        return level;
+    }
+
     /**
      * @return the level being played
      */

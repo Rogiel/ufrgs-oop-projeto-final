@@ -81,7 +81,7 @@ public class GameWindow {
         nextMapButton.setEnabled(gameMap.getState() == GameMap.State.MAP_COMPLETE);
 
         towerAscencionBar.setMaximum(10);
-        // towerAscencionBar.setValue( ?? );
+        towerAscencionBar.setValue((int) gameMap.getMapLevel());
 
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         if (gameLevel != null && gameLevel.getMonster() != null) {
@@ -155,10 +155,11 @@ public class GameWindow {
 
     private void executeClassTransfer() {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        if(player.hasSubclassOptions()) {
+        if (player.hasSubclassOptions()) {
             final ClassTransferDialog classTransferDialog = new ClassTransferDialog(player.getSubclassOptions());
+            classTransferDialog.pack();
             classTransferDialog.setVisible(true);
-            if(classTransferDialog.getSelectedPlayerClassTemplate() != null) {
+            if (classTransferDialog.getSelectedPlayerClassTemplate() != null) {
                 player.transferClass(classTransferDialog.getSelectedPlayerClassTemplate());
             }
         }
