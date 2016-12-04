@@ -37,10 +37,10 @@ public class Main {
         System.out.print("Character name: ");
         final String name = reader.readLine();
 
-        System.out.print("Choose your Race (HUMAN - RACE-B - RACE-C): ");
+        System.out.print("Choose your Race (HUMAN - ORC - ELF): ");
         final String race = reader.readLine();
 
-        System.out.print("Choose your Class (WARRIOR - WIZARD - ROGUE): ");
+        System.out.print("Choose your Class (WARRIOR - MAGE - ROGUE): ");
         final String classe = reader.readLine();
 
         final GamePlayer player = factory.createPlayer(race, classe);
