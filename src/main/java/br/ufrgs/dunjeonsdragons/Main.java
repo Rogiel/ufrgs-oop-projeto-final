@@ -22,10 +22,6 @@ public class Main {
         final GameMap map = factory.createMap("DEFAULT_MAP", player);
         gameManager.addEntity(GameMap.DEFAULT_MAP_ENTITY_NAME, map);
 
-        gameManager.addEventListener(event -> {
-            System.out.println(event);
-        });
-
         while(true) {
             gameManager.performTurn();
             if(map.getState() != GameMap.State.RUNNING) {
