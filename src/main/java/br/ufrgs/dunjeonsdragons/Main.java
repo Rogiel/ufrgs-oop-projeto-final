@@ -28,9 +28,9 @@ public class Main {
 
         while (true) {
             gameManager.performTurn();
-            if (map.getState() != GameMap.State.RUNNING) {
-                break;
-            }
+//            if (map.getState() != GameMap.State.RUNNING) {
+//                break;
+//            }
         }
     }
 

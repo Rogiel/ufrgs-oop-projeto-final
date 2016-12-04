@@ -43,10 +43,10 @@ public class GameUIController {
 
     public boolean handleUserInput() throws IOException {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
-        if (map != null && map.getState() != GameMap.State.RUNNING) {
-            System.out.println("Game over.");
-            return true;
-        }
+//        if (map != null && map.getState() != GameMap.State.RUNNING) {
+//            System.out.println("Game over.");
+//            return true;
+//        }
 
         final String commandLine = reader.readLine();
         final StringTokenizer tokenizer = new StringTokenizer(commandLine);
@@ -62,8 +62,6 @@ public class GameUIController {
 
             case NEXT_LEVEL_COMMAND:
                 nextLevel(tokenizer);
-//                gameManager.performTurn();
-
                 break;
             case STATUS_COMMAND:
                 handleStatus(tokenizer);
@@ -71,6 +69,7 @@ public class GameUIController {
 
             case SHOW_EXPERIENCE:
                 handleExperience(tokenizer);
+                break;
 
             case COMBAT:
                 handleCombat(tokenizer);
@@ -93,9 +92,9 @@ public class GameUIController {
 
     private void handleAttack(final StringTokenizer tokenizer) {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
 
-        character.attack(player);
+        player.attack(gameLevel.getMonster());
     }
 
     private void nextLevel(final StringTokenizer tokenizer) {

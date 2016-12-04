@@ -14,10 +14,6 @@ public class GamePlayer extends GameCharacter {
 
     public static final String DEFAULT_PLAYER_ENTITY_NAME = "GamePlayer";
 
-    public static final int[][] EXPERIENCE_TABLE = {
-            {}
-    };
-
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -122,19 +118,6 @@ public class GamePlayer extends GameCharacter {
 
     public List<PlayerClassTemplate> getSubclassOptions() {
         return new ArrayList<>();
-    }
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    protected void levelUp() {
-        level += 1;
-        resetHealth();
-        // TODO check for the maximum level
-    }
-
-    public void setLevel(int level) {
-        // FIXME take this out
-        this.level = level;
     }
 
     // -----------------------------------------------------------------------------------------------------------------

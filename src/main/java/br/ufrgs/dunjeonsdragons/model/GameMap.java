@@ -92,10 +92,10 @@ public class GameMap extends GameObject {
         currentLevelIndex++;
 
         // create the next level
-        if (currentLevelIndex >= template.getLevels().size()) {
-            state = State.VICTORY;
-            return;
-        }
+//        if (currentLevelIndex >= template.getLevels().size()) {
+//            state = State.VICTORY;
+//            return;
+//        }
 
         final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
         final GameLevel level = new GameLevel(levelTemplate, player, template.getLevel());

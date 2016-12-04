@@ -62,8 +62,6 @@ public class GameLevel extends GameObject {
         super.didAddToGameManager(gameManager);
 
         monster = new GameMonster(template.getRandomMonster(), levelNumber);
-        monster.setHealth(10);
-
         gameManager.addEntity("LevelMonster", monster);
     }
 
