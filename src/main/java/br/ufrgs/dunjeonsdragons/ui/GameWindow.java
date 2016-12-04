@@ -33,6 +33,8 @@ public class GameWindow {
     private JProgressBar monsterHpBar;
     private JProgressBar gameProgressBar;
     private JButton resetMapButton;
+    private JLabel monsterDamageField;
+    private JLabel playerDamageField;
 
     private final GameManager gameManager;
 
@@ -48,10 +50,6 @@ public class GameWindow {
         updateUI();
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
-
     private void updateUI() {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         playerNameField.setText(player.getName());
@@ -60,24 +58,40 @@ public class GameWindow {
         playerExperienceField.setText(Long.toString(player.getExperience()));
         playerHpBar.setMaximum((int) (double) player.getMaxHealth());
         playerHpBar.setValue((int) (double) player.getHealth());
+        playerDamageField.setText(Integer.toString((int) player.getDamage()));
 
         experienceBar.setMaximum((int) player.getExperienceRequiredForNextLevel());
         experienceBar.setValue((int) player.getExperience());
 
-        final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
-        if (gameLevel != null) {
-            final GameMonster monster = gameLevel.getMonster();
-            if (monster != null) {
-                monsterNameLabel.setText(monster.getName());
-                monsterHpField.setText(Integer.toString((int) monster.getHealth()) + "/" + Integer.toString((int) monster.getMaxHealth()));
-                monsterHpBar.setMaximum((int) (double) monster.getMaxHealth());
-                monsterHpBar.setValue((int) (double) monster.getHealth());
-            }
-        }
-
         final GameMap gameMap = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
         gameProgressBar.setMaximum(gameMap.getLevelCountInMap());
         gameProgressBar.setValue(gameMap.getCurrentLevelIndex());
+
+        nextMapButton.setEnabled(gameMap.getState() == GameMap.State.MAP_COMPLETE);
+
+        final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+        if (gameLevel != null && gameLevel.getMonster() != null) {
+            final GameMonster monster = gameLevel.getMonster();
+            monsterNameLabel.setText(monster.getName());
+            monsterHpField.setText(Integer.toString((int) monster.getHealth()) + "/" + Integer.toString((int) monster.getMaxHealth()));
+            monsterHpBar.setMaximum((int) (double) monster.getMaxHealth());
+            monsterHpBar.setValue((int) (double) monster.getHealth());
+            monsterDamageField.setText(Integer.toString((int) monster.getDamage()));
+
+            attackButton.setEnabled(true);
+            combatButton.setEnabled(true);
+            resetMapButton.setEnabled(false);
+        } else {
+            monsterNameLabel.setText(null);
+            monsterHpField.setText("0/0");
+            monsterHpBar.setMaximum(1);
+            monsterHpBar.setValue(0);
+            monsterDamageField.setText(null);
+
+            resetMapButton.setEnabled(true);
+            attackButton.setEnabled(false);
+            combatButton.setEnabled(false);
+        }
     }
 
     private void handleCombat() {
@@ -85,11 +99,11 @@ public class GameWindow {
         final GameMonster monster = gameLevel.getMonster();
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
 
-        if (player.isDead()) {
-            return;
-        }
-
         while (!monster.isDead()) {
+            if (player.isDead()) {
+                handleStatus();
+                return;
+            }
             handleAttack();
         }
         handleStatus();
