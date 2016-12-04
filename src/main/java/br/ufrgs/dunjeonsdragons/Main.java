@@ -51,7 +51,7 @@ public class Main {
             player.setName(name);
         }
 
-        System.out.print("Character create succesful!");
+        System.out.print("Character creation succesful! \n");
         return player;
     }
 }
