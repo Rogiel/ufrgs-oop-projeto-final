@@ -62,6 +62,8 @@ public class GamePlayer extends GameCharacter {
                 return getDexterity();
             case "Intelligence":
                 return getIntelligence();
+            case "StrenghIntelligence":
+                return getStrength() + getIntelligence();
             default:
                 return 0;
         }

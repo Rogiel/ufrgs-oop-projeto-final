@@ -40,13 +40,6 @@ public class GameUIController {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public enum UserInputActionResult {
-        IGNORED,
-        WON,
-        LOST,
-        NORMAL
-    }
-
     public boolean handleUserInput() throws IOException {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
         if (map != null && map.getState() != GameMap.State.RUNNING) {
