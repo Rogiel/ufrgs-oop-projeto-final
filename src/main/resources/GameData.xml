@@ -233,10 +233,16 @@
         <HealthPerLevel>3</HealthPerLevel>
     </Monster>
 
+    <Monster identifier="DRAKE">
+    <Name>Drake</Name>
+    <DamagePerLevel>3</DamagePerLevel>
+    <HealthPerLevel>3</HealthPerLevel>
+
+
     <Monster identifier="BOSS">
         <Name>Boss</Name>
-        <DamagePerLevel>4</DamagePerLevel>
-        <HealthPerLevel>4</HealthPerLevel>
+        <DamagePerLevel>5</DamagePerLevel>
+        <HealthPerLevel>5</HealthPerLevel>
     </Monster>
 
 
