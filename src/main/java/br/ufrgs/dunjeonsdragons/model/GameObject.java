@@ -3,9 +3,6 @@ package br.ufrgs.dunjeonsdragons.model;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameEntity;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 
-/**
- * Created by Rogiel on 9/6/16.
- */
 public abstract class GameObject implements GameEntity {
 
     /**
@@ -20,7 +17,7 @@ public abstract class GameObject implements GameEntity {
 
     @Override
     public void didAddToGameManager(GameManager gameManager) {
-        if(this.gameManager != null) {
+        if (this.gameManager != null) {
             throw new RuntimeException("This GameObject is already registered with a game manager.");
         }
         this.gameManager = gameManager;
@@ -28,7 +25,7 @@ public abstract class GameObject implements GameEntity {
 
     @Override
     public void didRemoveFromGameManager(GameManager gameManager) {
-        if(this.gameManager != gameManager) {
+        if (this.gameManager != gameManager) {
             throw new RuntimeException("This GameObject is not registered with the given game manager.");
         }
         this.gameManager = null;

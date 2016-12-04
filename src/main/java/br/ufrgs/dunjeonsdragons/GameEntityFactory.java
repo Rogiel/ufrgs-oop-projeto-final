@@ -10,9 +10,6 @@ import br.ufrgs.dunjeonsdragons.template.loader.XMLTemplateLoader;
 import java.net.URL;
 import java.util.List;
 
-/**
- * Created by Rogiel on 9/20/16.
- */
 public class GameEntityFactory {
 
     /**

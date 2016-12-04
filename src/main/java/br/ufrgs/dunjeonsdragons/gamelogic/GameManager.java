@@ -8,9 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Rogiel on 9/13/16.
- */
 public class GameManager {
 
     /**
@@ -41,7 +38,7 @@ public class GameManager {
     // -----------------------------------------------------------------------------------------------------------------
 
     public void addEntity(String name, GameEntity entity) {
-        if(entities.put(name, entity) != null) {
+        if (entities.put(name, entity) != null) {
             return;
         }
         entity.didAddToGameManager(this);
@@ -49,7 +46,7 @@ public class GameManager {
 
     public void removeEntity(String name) {
         final GameEntity removed = entities.remove(name);
-        if(removed == null) {
+        if (removed == null) {
             return;
         }
         removed.didRemoveFromGameManager(this);
@@ -64,6 +61,7 @@ public class GameManager {
     public void addEventListener(GameEventListener eventListener) {
         this.eventListeners.add(eventListener);
     }
+
     public void removeEventListener(GameEventListener eventListener) {
         this.eventListeners.remove(eventListener);
     }
@@ -72,14 +70,14 @@ public class GameManager {
 
     public void performTurn() {
         final List<GameEntity> entities = new ArrayList<>(this.entities.values());
-        for(GameEntity entity : entities) {
+        for (GameEntity entity : entities) {
             entity.performTurn(turn);
         }
         turn++;
     }
 
     public void triggerEvent(final GameEvent event) {
-        for(final GameEventListener listener : eventListeners) {
+        for (final GameEventListener listener : eventListeners) {
             listener.onGameEvent(event);
         }
     }

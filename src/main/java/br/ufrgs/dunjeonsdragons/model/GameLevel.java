@@ -3,9 +3,6 @@ package br.ufrgs.dunjeonsdragons.model;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.template.LevelTemplate;
 
-/**
- * Created by Rogiel on 12/1/16.
- */
 public class GameLevel extends GameObject {
 
     public static final String DEFAULT_LEVEL_ENTITY_NAME = "GameLevel";

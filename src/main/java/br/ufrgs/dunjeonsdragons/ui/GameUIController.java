@@ -1,7 +1,10 @@
 package br.ufrgs.dunjeonsdragons.ui;
 
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
-import br.ufrgs.dunjeonsdragons.model.*;
+import br.ufrgs.dunjeonsdragons.model.GameLevel;
+import br.ufrgs.dunjeonsdragons.model.GameMap;
+import br.ufrgs.dunjeonsdragons.model.GameMonster;
+import br.ufrgs.dunjeonsdragons.model.GamePlayer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +12,6 @@ import java.io.InputStreamReader;
 import java.text.NumberFormat;
 import java.util.StringTokenizer;
 
-/**
- * Created by Rogiel on 12/1/16.
- */
 public class GameUIController {
 
     private static final String ATTACK_COMMAND = "attack";

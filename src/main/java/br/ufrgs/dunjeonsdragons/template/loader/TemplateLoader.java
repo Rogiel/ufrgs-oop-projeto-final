@@ -5,9 +5,6 @@ import br.ufrgs.dunjeonsdragons.template.Template;
 
 import java.util.List;
 
-/**
- * Created by Rogiel on 9/13/16.
- */
 public interface TemplateLoader {
 
     /**

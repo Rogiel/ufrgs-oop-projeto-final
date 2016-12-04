@@ -1,12 +1,12 @@
 package br.ufrgs.dunjeonsdragons.template;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlIDREF;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Rogiel on 9/13/16.
- */
 public class LevelTemplate extends Template {
 
     private static final Random randomGenerator = new Random();

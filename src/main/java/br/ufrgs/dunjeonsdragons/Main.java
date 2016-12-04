@@ -3,7 +3,6 @@ package br.ufrgs.dunjeonsdragons;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.model.GameMap;
 import br.ufrgs.dunjeonsdragons.model.GamePlayer;
-import br.ufrgs.dunjeonsdragons.template.MapTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 import br.ufrgs.dunjeonsdragons.template.Template;
@@ -16,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException {
         final GameEntityFactory factory = new GameEntityFactory(
-                Main.class.getResource("GameData.xml")
+                Main.class.getClassLoader().getResource("GameData.xml")
         );
         final GameManager gameManager = new GameManager();
 
@@ -53,8 +52,8 @@ public class Main {
         final PlayerRaceTemplate raceTemplate = (PlayerRaceTemplate) raceTemplateRaw;
 
         final StringBuilder builder = new StringBuilder("Choose your Class (");
-        for(PlayerClassTemplate allowedClassTemplate : raceTemplate.getStartingClasses()) {
-            builder.append(allowedClassTemplate.getIdentifier()+" - ");
+        for (PlayerClassTemplate allowedClassTemplate : raceTemplate.getStartingClasses()) {
+            builder.append(allowedClassTemplate.getIdentifier() + " - ");
         }
         builder.delete(builder.length() - 3, builder.length());
         builder.append("): ");

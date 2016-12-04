@@ -5,16 +5,15 @@ import br.ufrgs.dunjeonsdragons.template.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.annotation.*;
-import java.io.File;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlElements;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Rogiel on 9/13/16.
- */
 public class XMLTemplateLoader implements TemplateLoader {
 
     /**
@@ -40,7 +39,7 @@ public class XMLTemplateLoader implements TemplateLoader {
 
     @Override
     public Template load(String identifier) {
-        if(templates == null) {
+        if (templates == null) {
             loadXML();
         }
         return templates.get(identifier);

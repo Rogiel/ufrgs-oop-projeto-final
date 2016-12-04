@@ -7,9 +7,6 @@ import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Rogiel on 9/13/16.
- */
 public class GamePlayer extends GameCharacter {
 
     public static final String DEFAULT_PLAYER_ENTITY_NAME = "GamePlayer";

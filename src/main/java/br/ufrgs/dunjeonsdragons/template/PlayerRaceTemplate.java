@@ -6,9 +6,6 @@ import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-/**
- * Created by Rogiel on 9/13/16.
- */
 @XmlRootElement(name = "Race")
 public class PlayerRaceTemplate extends Template {
 
@@ -111,6 +108,7 @@ public class PlayerRaceTemplate extends Template {
     public int getDexterity(int level) {
         return dexterity + vitalityPerLevel * level;
     }
+
     public int getDexterity() {
         return dexterity;
     }
@@ -122,6 +120,7 @@ public class PlayerRaceTemplate extends Template {
     public int getIntelligence(int level) {
         return intelligence + intelligencePerLevel * level;
     }
+
     public int getIntelligence() {
         return intelligence;
     }

@@ -1,11 +1,7 @@
 package br.ufrgs.dunjeonsdragons.template;
 
-import javax.xml.bind.annotation.*;
-import java.util.List;
+import javax.xml.bind.annotation.XmlAttribute;
 
-/**
- * Created by Rogiel on 9/13/16.
- */
 public class ExperienceTableEntry extends Template {
 
     @XmlAttribute(name = "level")

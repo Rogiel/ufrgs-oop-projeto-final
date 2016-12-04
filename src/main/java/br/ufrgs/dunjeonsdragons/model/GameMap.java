@@ -8,9 +8,6 @@ import br.ufrgs.dunjeonsdragons.ui.GameUIController;
 
 import java.io.IOException;
 
-/**
- * Created by Rogiel on 12/1/16.
- */
 public class GameMap extends GameObject {
 
     public static final String DEFAULT_MAP_ENTITY_NAME = "GameMap";

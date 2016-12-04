@@ -1,12 +1,5 @@
 package br.ufrgs.dunjeonsdragons.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-/**
- * Created by Rogiel on 9/13/16.
- */
 public abstract class GameCharacter extends GameObject {
 
     /**
