@@ -44,7 +44,9 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException, IOException, ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
         final GameEntityFactory factory = new GameEntityFactory(
                 Main.class.getClassLoader().getResource("GameData.xml")
         );
