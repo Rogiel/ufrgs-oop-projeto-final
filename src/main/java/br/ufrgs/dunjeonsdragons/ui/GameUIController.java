@@ -82,8 +82,10 @@ public class GameUIController {
     }
 
     private void handleAttack(final StringTokenizer tokenizer) {
-        final GameCharacter character = (GameCharacter) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        character.attack();
+        final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+
+        character.attack(player);
     }
 
     private void nextLevel(final StringTokenizer tokenizer) {

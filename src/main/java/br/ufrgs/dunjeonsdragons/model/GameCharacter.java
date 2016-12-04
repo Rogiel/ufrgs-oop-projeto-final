@@ -9,15 +9,6 @@ import java.util.List;
  */
 public abstract class GameCharacter extends GameObject {
 
-    // -----------------------------------------------------------------------------------------------------------------
-
-    /**
-     * The characters target
-     */
-    protected GameCharacter target;
-
-    // -----------------------------------------------------------------------------------------------------------------
-
     /**
      * The amount of health on the character
      */
@@ -40,27 +31,19 @@ public abstract class GameCharacter extends GameObject {
 
     public abstract double getDamage();
 
-    public void attack() {
-        if (target == null) {
-            throw new RuntimeException("No target");
-            // TODO proper exception
-        }
-
+    public void attack(GameCharacter target) {
         // take life out of the target
         final double targetHealth = target.getHealth();
         target.setHealth(targetHealth - getDamage());
+
+        if(target.getHealth() == 0) {
+            didKill(target);
+        }
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    public void didKill(GameCharacter character) {
 
-    public GameCharacter getTarget() {
-        return target;
     }
-
-    public void setTarget(GameCharacter target) {
-        this.target = target;
-    }
-
 
     // -----------------------------------------------------------------------------------------------------------------
 

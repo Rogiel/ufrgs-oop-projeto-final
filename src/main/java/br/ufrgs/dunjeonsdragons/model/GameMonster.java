@@ -54,6 +54,10 @@ public class GameMonster extends GameCharacter {
         this.level = level;
     }
 
+    public long getExperienceOnKill() {
+        return template.getExperiencePerLevel() * level;
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
 
     /**

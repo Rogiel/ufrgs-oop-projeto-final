@@ -65,14 +65,12 @@ public class GameLevel extends GameObject {
         monster.setHealth(10);
 
         gameManager.addEntity("LevelMonster", monster);
-        player.setTarget(monster);
     }
 
     @Override
     public void didRemoveFromGameManager(GameManager gameManager) {
         super.didRemoveFromGameManager(gameManager);
         gameManager.removeEntity("LevelMonster");
-        player.setTarget(null);
     }
 
     // -----------------------------------------------------------------------------------------------------------------

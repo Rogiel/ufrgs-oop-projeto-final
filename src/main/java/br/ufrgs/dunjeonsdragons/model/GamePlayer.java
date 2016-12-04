@@ -50,7 +50,7 @@ public class GamePlayer extends GameCharacter {
     /**
      * The player experience
      */
-    private int experience;
+    private long experience;
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -88,6 +88,15 @@ public class GamePlayer extends GameCharacter {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    @Override
+    public void didKill(GameCharacter character) {
+        if(character instanceof GameMonster) {
+            addExperience(((GameMonster) character).getExperienceOnKill());
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     public void transferClass(PlayerClassTemplate newClassTemplate) {
         if (!classTemplate.getSubclasses().contains(newClassTemplate)) {
             // TODO use a proper exception
@@ -97,7 +106,7 @@ public class GamePlayer extends GameCharacter {
         resetHealth();
     }
 
-    public void addExperience(int experienceToAdd) {
+    public void addExperience(long experienceToAdd) {
         this.experience += experienceToAdd;
         for (ExperienceTableEntry entry : experienceTable) {
             if (entry.getExperience() >= this.experience && this.level < entry.getLevel()) {
@@ -172,7 +181,7 @@ public class GamePlayer extends GameCharacter {
     /**
      * @return the player experience points
      */
-    public int getExperience() {
+    public long getExperience() {
         return experience;
     }
 
