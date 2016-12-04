@@ -334,14 +334,14 @@
 
     <Monster identifier="DRAKE">
         <Name>Drake</Name>
-        <DamagePerLevel>6</DamagePerLevel>
+        <DamagePerLevel>3</DamagePerLevel>
         <HealthPerLevel>30</HealthPerLevel>
         <ExperiencePerLevel>1</ExperiencePerLevel>
     </Monster>
 
     <Monster identifier="BOSS">
         <Name>Boss</Name>
-        <DamagePerLevel>8</DamagePerLevel>
+        <DamagePerLevel>3</DamagePerLevel>
         <HealthPerLevel>70</HealthPerLevel>
         <ExperiencePerLevel>5</ExperiencePerLevel>
 
