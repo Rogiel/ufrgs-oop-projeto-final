@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         final GameEntityFactory factory = new GameEntityFactory();
         final GameManager gameManager = new GameManager();
-
+        System.out.print("Welcome To DunJeons & Dragons! \n\n~~~ AQUI VAI A LISTA DE COMANDOS~~~\n\n");
         final GamePlayer player = createPlayerFromInput(factory);
         gameManager.addEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME, player);
 
@@ -34,6 +34,7 @@ public class Main {
 
     private static GamePlayer createPlayerFromInput(final GameEntityFactory factory) throws IOException {
         final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Create your Character \n");
         System.out.print("Character name: ");
         final String name = reader.readLine();
 
