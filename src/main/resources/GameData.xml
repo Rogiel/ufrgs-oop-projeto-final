@@ -59,9 +59,9 @@
         <DexterityPerLevel>1</DexterityPerLevel>
         <IntelligencePerLevel>1</IntelligencePerLevel>
         <Strength>15</Strength>
-        <Vitality>9</Vitality>
+        <Vitality>15</Vitality>
         <Dexterity>9</Dexterity>
-        <Intelligence>15</Intelligence>
+        <Intelligence>9</Intelligence>
 
         <StartingClasses>
             <Class>WARRIOR</Class>
@@ -75,10 +75,11 @@
         <VitalityPerLevel>1</VitalityPerLevel>
         <DexterityPerLevel>2</DexterityPerLevel>
         <IntelligencePerLevel>1</IntelligencePerLevel>
+
         <Strength>9</Strength>
-        <Vitality>15</Vitality>
+        <Vitality>9</Vitality>
         <Dexterity>15</Dexterity>
-        <Intelligence>9</Intelligence>
+        <Intelligence>15</Intelligence>
 
         <StartingClasses>
             <Class>MAGE</Class>
@@ -95,7 +96,7 @@
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
-        <PrimaryStat>Strenght</PrimaryStat>
+        <PrimaryStat>Strength</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -134,7 +135,7 @@
         <DexterityPerLevel>1</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
-        <PrimaryStat>Strenght</PrimaryStat>
+        <PrimaryStat>Strength</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -155,7 +156,7 @@
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
-        <PrimaryStat>Strenght</PrimaryStat>
+        <PrimaryStat>Strength</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -169,7 +170,7 @@
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
-        <PrimaryStat>Strenght</PrimaryStat>
+        <PrimaryStat>Strength</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -184,7 +185,7 @@
         <DexterityPerLevel>2</DexterityPerLevel>
         <IntelligencePerLevel>2</IntelligencePerLevel>
 
-        <PrimaryStat>StrenghIntelligence</PrimaryStat>
+        <PrimaryStat>StrengthIntelligence</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -227,7 +228,7 @@
         <DexterityPerLevel>1</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
-        <PrimaryStat>Strenght</PrimaryStat>
+        <PrimaryStat>Strength</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -277,6 +278,7 @@
         <DamagePerLevel>5</DamagePerLevel>
         <HealthPerLevel>5</HealthPerLevel>
         <ExperiencePerLevel>5</ExperiencePerLevel>
+
     </Monster>
 
     <ExperienceTable>
