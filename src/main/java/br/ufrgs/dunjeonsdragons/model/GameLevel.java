@@ -55,7 +55,8 @@ public class GameLevel extends GameObject {
     public void didAddToGameManager(GameManager gameManager) {
         super.didAddToGameManager(gameManager);
 
-        monster = new GameMonster(template.getMonster());
+        // TODO do not use player level here
+        monster = new GameMonster(template.getMonster(), player.getLevel());
         monster.setHealth(10);
 
         gameManager.addEntity("LevelMonster", monster);

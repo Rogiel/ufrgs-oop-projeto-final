@@ -14,7 +14,27 @@ public class MonsterTemplate extends Template {
     @XmlElement(name = "Name")
     private String name;
 
+    /**
+     * The damage per level
+     */
+    @XmlElement(name = "DamagePerLevel")
+    private double damagePerLevel;
+
+    /**
+     * The health per level
+     */
+    @XmlElement(name = "HealthPerLevel")
+    private double healthPerLevel;
+
     public String getName() {
         return name;
+    }
+
+    public double getDamagePerLevel() {
+        return damagePerLevel;
+    }
+
+    public double getHealthPerLevel() {
+        return healthPerLevel;
     }
 }

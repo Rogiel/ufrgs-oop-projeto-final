@@ -51,6 +51,22 @@ public class GamePlayer extends GameCharacter {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    @Override
+    public double getDamage() {
+        switch (classTemplate.getPrimaryStat()) {
+            case "Strength":
+                return getStrength();
+            case "Vitality":
+                return getVitality();
+            case "Dexterity":
+                return getDexterity();
+            case "Intelligence":
+                return getIntelligence();
+            default:
+                return 0;
+        }
+    }
+
     public void attack() {
         if (target == null) {
             throw new RuntimeException("No target");
@@ -59,7 +75,7 @@ public class GamePlayer extends GameCharacter {
 
         // take life out of the target
         final double targetHealth = target.getHealth();
-        target.setHealth(targetHealth - getStrength());
+        target.setHealth(targetHealth - getDamage());
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -87,6 +103,7 @@ public class GamePlayer extends GameCharacter {
 
     protected void levelUp() {
         level += 1;
+        setHealth(getVitality());
         // TODO check for the maximum level
     }
 

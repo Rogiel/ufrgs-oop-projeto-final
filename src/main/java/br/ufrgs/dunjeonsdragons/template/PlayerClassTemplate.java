@@ -44,6 +44,14 @@ public class PlayerClassTemplate extends Template {
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
+     * The class intelligence per level
+     */
+    @XmlElement(name = "PrimaryStat")
+    private String primaryStat;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
      * The race restrictions
      */
     @XmlElementWrapper(name = "RaceRestriction")
@@ -95,6 +103,10 @@ public class PlayerClassTemplate extends Template {
 
     public int getIntelligencePerLevel() {
         return intelligencePerLevel;
+    }
+
+    public String getPrimaryStat() {
+        return primaryStat;
     }
 
     public List<PlayerRaceTemplate> getRaceRestrictions() {

@@ -37,11 +37,12 @@ public class GameEntityFactory {
      * Creates a new monster object from the given monster template identifier
      *
      * @param monsterTemplateIdentifier the monster template identifier
+     * @param level                     the monster level
      * @return a newly created GameMonster object
      */
-    public GameMonster createMonster(String monsterTemplateIdentifier) {
+    public GameMonster createMonster(String monsterTemplateIdentifier, final int level) {
         return new GameMonster(
-                (MonsterTemplate) loader.load(monsterTemplateIdentifier)
+                (MonsterTemplate) loader.load(monsterTemplateIdentifier), level
         );
     }
 

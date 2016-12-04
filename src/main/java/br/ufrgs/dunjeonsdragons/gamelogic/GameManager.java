@@ -64,7 +64,6 @@ public class GameManager {
     public void addEventListener(GameEventListener eventListener) {
         this.eventListeners.add(eventListener);
     }
-
     public void removeEventListener(GameEventListener eventListener) {
         this.eventListeners.remove(eventListener);
     }

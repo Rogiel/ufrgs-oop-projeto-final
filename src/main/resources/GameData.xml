@@ -15,7 +15,7 @@
         <Name>Test Monster</Name>
     </Monster>
 
-    <Skill identifier="ATTACK" >
+    <Skill identifier="ATTACK">
         <Effects>
             <Effect ClassName="br.ufrgs.dunjeonsdragons.effects.DamageEffect">
 
@@ -34,6 +34,8 @@
         <Vitality>12</Vitality>
         <Dexterity>12</Dexterity>
         <Intelligence>12</Intelligence>
+
+        <PrimaryStat>Intelligence</PrimaryStat>
     </Race>
     <Race identifier="ORC">
         <Name>Orc</Name>
