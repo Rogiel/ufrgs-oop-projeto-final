@@ -52,6 +52,21 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!-- Make this jar executable -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <!-- DO NOT include log4j.properties file in your Jar -->
+                    <archive>
+                        <manifest>
+                            <!-- Jar file entry point -->
+                            <mainClass>br.ufrgs.dunjeonsdragons.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
