@@ -74,6 +74,7 @@ public class GameUIController {
 
             case STATUS_COMMAND:
                 handleStatus(tokenizer);
+                gameManager.performTurn();
                 break;
 
             case SHOW_EXPERIENCE:
@@ -97,6 +98,26 @@ public class GameUIController {
 
     private void handleCombat(StringTokenizer tokenizer) {
         //TODO implementar attack + status enquanto vida !=0
+        final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+
+        player.attack(gameLevel.getMonster());
+
+        final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName() + " Level: " + character.getLevel());
+        System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(character.getHealth()));
+        System.out.println("\tDamage: " + NumberFormat.getNumberInstance().format(character.getDamage()));
+
+        final GameLevel level = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+        if (level != null) {
+            final GameMonster monster = level.getMonster();
+            System.out.println("Monster: " + monster.getName());
+            if (monster == null) {
+                System.out.println("\tNo monster on current level");
+            } else {
+                System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(monster.getHealth()));
+                System.out.println("\tDamage: " + monster.getDamage());
+            }
     }
 
     private void handleAttack(final StringTokenizer tokenizer) {
