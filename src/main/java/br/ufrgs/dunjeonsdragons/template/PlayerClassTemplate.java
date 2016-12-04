@@ -136,7 +136,7 @@ public class PlayerClassTemplate extends Template {
     }
 
     public int getDexterity(int level) {
-        return vitalityPerLevel * level;
+        return dexterityPerLevel * level;
     }
 
     public int getDexterityPerLevel() {
