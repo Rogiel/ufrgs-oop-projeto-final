@@ -37,9 +37,6 @@ package br.ufrgs.dunjeonsdragons.model;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.template.LevelTemplate;
 import br.ufrgs.dunjeonsdragons.template.MapTemplate;
-import br.ufrgs.dunjeonsdragons.ui.GameUIController;
-
-import java.io.IOException;
 
 public class GameMap extends GameObject {
 
@@ -88,8 +85,6 @@ public class GameMap extends GameObject {
     private GameLevel currentLevel;
 
     // -----------------------------------------------------------------------------------------------------------------
-
-    private GameUIController uiController;
 
     /**
      * Create a new game map instance
@@ -162,8 +157,6 @@ public class GameMap extends GameObject {
     public void didAddToGameManager(GameManager gameManager) {
         super.didAddToGameManager(gameManager);
 
-        uiController = new GameUIController(gameManager);
-
         final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
         final GameLevel level = new GameLevel(levelTemplate, player, this.level);
         gameManager.addEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME, level);
@@ -174,7 +167,6 @@ public class GameMap extends GameObject {
     public void didRemoveFromGameManager(GameManager gameManager) {
         super.didRemoveFromGameManager(gameManager);
         gameManager.removeEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
-        uiController = null;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
