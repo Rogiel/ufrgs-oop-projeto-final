@@ -4,15 +4,23 @@
     <Map identifier="TOWER_1" level="1" nextMap="TOWER_2">
         <Level identifier="FIRST_LEVEL" name="The First Level">
             <Monsters>
-                <Monster>DRAKE</Monster>
+                <Monster>GHOUL</Monster>
                 <Monster>GOLEM</Monster>
+                <Monster>SAVAGEPIG</Monster>
+                <Monster>WRAITH</Monster>
+                <Monster>DRAKE</Monster>
+                <Monster>BOSS</Monster>
             </Monsters>
         </Level>
 
         <Level identifier="SECOND_LEVEL" name="The Second Level">
             <Monsters>
-                <Monster>DRAKE</Monster>
+                <Monster>GHOUL</Monster>
                 <Monster>GOLEM</Monster>
+                <Monster>SAVAGEPIG</Monster>
+                <Monster>WRAITH</Monster>
+                <Monster>DRAKE</Monster>
+                <Monster>BOSS</Monster>
             </Monsters>
         </Level>
     </Map>
@@ -20,15 +28,23 @@
     <Map identifier="TOWER_2" level="2">
         <Level identifier="FIRST_LEVEL" name="The First Level">
             <Monsters>
-                <Monster>DRAKE</Monster>
+                <Monster>GHOUL</Monster>
                 <Monster>GOLEM</Monster>
+                <Monster>SAVAGEPIG</Monster>
+                <Monster>WRAITH</Monster>
+                <Monster>DRAKE</Monster>
+                <Monster>BOSS</Monster>
             </Monsters>
         </Level>
 
         <Level identifier="SECOND_LEVEL" name="The Second Level">
             <Monsters>
-                <Monster>DRAKE</Monster>
+                <Monster>GHOUL</Monster>
                 <Monster>GOLEM</Monster>
+                <Monster>SAVAGEPIG</Monster>
+                <Monster>WRAITH</Monster>
+                <Monster>DRAKE</Monster>
+                <Monster>BOSS</Monster>
             </Monsters>
         </Level>
     </Map>
