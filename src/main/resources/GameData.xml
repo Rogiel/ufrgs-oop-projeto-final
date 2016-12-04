@@ -69,6 +69,8 @@
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
+        <PrimaryStat>Strenght</PrimaryStat>
+
         <RaceRestriction>
             <Race>HUMAN</Race>
             <Race>ORC</Race>
@@ -234,10 +236,10 @@
     </Monster>
 
     <Monster identifier="DRAKE">
-    <Name>Drake</Name>
-    <DamagePerLevel>3</DamagePerLevel>
-    <HealthPerLevel>3</HealthPerLevel>
-
+        <Name>Drake</Name>
+        <DamagePerLevel>3</DamagePerLevel>
+        <HealthPerLevel>3</HealthPerLevel>
+    </Monster>
 
     <Monster identifier="BOSS">
         <Name>Boss</Name>
