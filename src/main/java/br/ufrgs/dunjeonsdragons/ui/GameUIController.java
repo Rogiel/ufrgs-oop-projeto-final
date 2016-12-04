@@ -99,11 +99,13 @@ public class GameUIController {
         final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
         System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(character.getHealth()));
+        System.out.println("\tDamage: " + NumberFormat.getNumberInstance().format(character.getDamage()));
 
         final GameLevel level = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         if (level != null) {
             final GameMonster monster = level.getMonster();
             System.out.println("Monster: " + monster.getName());
+            System.out.println("Damage: " + monster.getDamage());
             if (monster == null) {
                 System.out.println("\tNo monster on current level");
             } else {
