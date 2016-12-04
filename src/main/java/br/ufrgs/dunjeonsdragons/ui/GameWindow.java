@@ -29,6 +29,7 @@ public class GameWindow {
     private JProgressBar experienceBar;
     private JProgressBar playerHpBar;
     private JProgressBar monsterHpBar;
+    private JProgressBar gameProgressBar;
 
     private final GameManager gameManager;
 
@@ -59,7 +60,6 @@ public class GameWindow {
         experienceBar.setMaximum(14); // TODO arrumar para sincronizar com o lvl (deixei 14 pq é a exp pra upar 1 vez)
         experienceBar.setValue((int) (long) (player.getExperience()));
 
-
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         if(gameLevel != null) {
             final GameMonster monster = gameLevel.getMonster();
@@ -70,6 +70,8 @@ public class GameWindow {
                 monsterHpBar.setValue((int) (double) monster.getHealth());
             }
         }
+        gameProgressBar.setMaximum(6);
+        // gameProgressBar.setValue( ??? ); TODO
     }
 
     private void handleCombat() {
