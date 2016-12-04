@@ -19,6 +19,7 @@ public class GameUIController {
     private static final String STATUS_COMMAND = "status";
     private static final String EXIT_COMMAND = "exit";
     private static final String SHOW_EXPERIENCE = "experience";
+    private static final String COMBAT = "combat";
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -71,6 +72,10 @@ public class GameUIController {
             case SHOW_EXPERIENCE:
                 handleExperience(tokenizer);
 
+            case COMBAT:
+                handleCombat(tokenizer);
+                break;
+
             case EXIT_COMMAND:
                 return false;
 
@@ -80,6 +85,10 @@ public class GameUIController {
         }
 
         return false;
+    }
+
+    private void handleCombat(StringTokenizer tokenizer) {
+        //TODO implementar attack + status enquanto vida !=0
     }
 
     private void handleAttack(final StringTokenizer tokenizer) {
