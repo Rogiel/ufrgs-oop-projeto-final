@@ -110,6 +110,9 @@ public class GameMap extends GameObject {
         // add the next level entity
         gameManager.addEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME, level);
 
+        // heal player when going to the next level
+        player.resetHealth();
+
         this.currentLevel = level;
     }
 
