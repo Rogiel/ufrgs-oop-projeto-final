@@ -91,8 +91,8 @@ public class GameWindow {
 
         transferClassButton.setEnabled(player.hasSubclassOptions());
 
-        experienceBar.setMaximum((int) player.getExperienceRequiredForNextLevel());
-        experienceBar.setValue((int) player.getExperience());
+        experienceBar.setMaximum((int) player.getExperienceRequiredForNextLevel() - (int) player.getMinimumExperienceForCurrentLevel());
+        experienceBar.setValue((int) player.getExperience() - (int) player.getMinimumExperienceForCurrentLevel());
 
         final GameMap gameMap = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
         gameProgressBar.setMaximum(gameMap.getLevelCountInMap());

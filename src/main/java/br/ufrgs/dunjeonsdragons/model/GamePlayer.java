@@ -220,6 +220,14 @@ public class GamePlayer extends GameCharacter {
         return this.experience;
     }
 
+    public long getMinimumExperienceForCurrentLevel() {
+        for (ExperienceTableEntry entry : experienceTable) {
+            if (this.level == entry.getLevel()) {
+                return entry.getExperience();
+            }
+        }
+        return 0;
+    }
 
     // -----------------------------------------------------------------------------------------------------------------
 
