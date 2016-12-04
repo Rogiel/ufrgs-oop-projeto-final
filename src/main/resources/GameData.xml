@@ -273,42 +273,42 @@
     <Monster identifier="GOLEM">
         <Name>Golem</Name>
         <DamagePerLevel>2</DamagePerLevel>
-        <HealthPerLevel>48</HealthPerLevel>
+        <HealthPerLevel>40</HealthPerLevel>
         <ExperiencePerLevel>1</ExperiencePerLevel>
     </Monster>
 
     <Monster identifier="SAVAGEPIG">
         <Name>SavagePig</Name>
         <DamagePerLevel>8</DamagePerLevel>
-        <HealthPerLevel>12</HealthPerLevel>
+        <HealthPerLevel>10</HealthPerLevel>
         <ExperiencePerLevel>1</ExperiencePerLevel>
     </Monster>
 
     <Monster identifier="WRAITH">
         <Name>Wraith</Name>
         <DamagePerLevel>6</DamagePerLevel>
-        <HealthPerLevel>24</HealthPerLevel>
+        <HealthPerLevel>20</HealthPerLevel>
         <ExperiencePerLevel>1</ExperiencePerLevel>
     </Monster>
 
     <Monster identifier="GHOUL">
         <Name>Ghoul</Name>
         <DamagePerLevel>4</DamagePerLevel>
-        <HealthPerLevel>36</HealthPerLevel>
+        <HealthPerLevel>30</HealthPerLevel>
         <ExperiencePerLevel>1</ExperiencePerLevel>
     </Monster>
 
     <Monster identifier="DRAKE">
         <Name>Drake</Name>
         <DamagePerLevel>6</DamagePerLevel>
-        <HealthPerLevel>36</HealthPerLevel>
+        <HealthPerLevel>30</HealthPerLevel>
         <ExperiencePerLevel>1</ExperiencePerLevel>
     </Monster>
 
     <Monster identifier="BOSS">
         <Name>Boss</Name>
-        <DamagePerLevel>10</DamagePerLevel>
-        <HealthPerLevel>60</HealthPerLevel>
+        <DamagePerLevel>8</DamagePerLevel>
+        <HealthPerLevel>70</HealthPerLevel>
         <ExperiencePerLevel>5</ExperiencePerLevel>
 
     </Monster>

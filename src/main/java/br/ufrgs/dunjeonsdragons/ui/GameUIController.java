@@ -105,6 +105,7 @@ public class GameUIController {
         }
         handleStatus(tokenizer);
     }
+
     private void handleAttack(final StringTokenizer tokenizer) {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
@@ -168,4 +169,5 @@ public class GameUIController {
         System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
         System.out.println("\tExperience: " + NumberFormat.getNumberInstance().format(character.getExperience()));
     }
+
 }
