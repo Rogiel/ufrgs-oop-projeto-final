@@ -3,6 +3,9 @@ package br.ufrgs.dunjeonsdragons;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.model.GameMap;
 import br.ufrgs.dunjeonsdragons.model.GamePlayer;
+import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
+import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
+import br.ufrgs.dunjeonsdragons.template.Template;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,9 +25,9 @@ public class Main {
         final GameMap map = factory.createMap("DEFAULT_MAP", player);
         gameManager.addEntity(GameMap.DEFAULT_MAP_ENTITY_NAME, map);
 
-        while(true) {
+        while (true) {
             gameManager.performTurn();
-            if(map.getState() != GameMap.State.RUNNING) {
+            if (map.getState() != GameMap.State.RUNNING) {
                 break;
             }
         }
@@ -39,11 +42,33 @@ public class Main {
         System.out.print("Choose your Race (HUMAN - ORC - ELF): ");
         final String race = reader.readLine();
 
-        System.out.print("Choose your Class (WARRIOR - MAGE - ROGUE): ");
+        final Template raceTemplateRaw = factory.loader.load(race);
+        if (raceTemplateRaw == null) {
+            System.err.println("Race " + race + " is invalid.");
+        }
+
+        final PlayerRaceTemplate raceTemplate = (PlayerRaceTemplate) raceTemplateRaw;
+
+        final StringBuilder builder = new StringBuilder("Choose your Class (");
+        for(PlayerClassTemplate allowedClassTemplate : raceTemplate.getStartingClasses()) {
+            builder.append(allowedClassTemplate.getIdentifier()+" - ");
+        }
+        builder.delete(builder.length() - 3, builder.length());
+        builder.append(")");
+
+        System.out.print(builder.toString());
         final String classe = reader.readLine();
 
+        final PlayerClassTemplate classTemplate = (PlayerClassTemplate) factory.loader.load(classe);
+        if (classTemplate == null) {
+            System.err.println("Class " + classe + " is invalid.");
+        }
+        if (!raceTemplate.getStartingClasses().contains(classTemplate)) {
+            System.err.println("Race " + race + " cannot be of class " + classe);
+        }
+
         final GamePlayer player = factory.createPlayer(race, classe);
-        if(!name.isEmpty()) {
+        if (!name.isEmpty()) {
             player.setName(name);
         }
 
