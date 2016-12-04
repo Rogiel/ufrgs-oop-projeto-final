@@ -3,6 +3,7 @@ package br.ufrgs.dunjeonsdragons;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.model.GameMap;
 import br.ufrgs.dunjeonsdragons.model.GamePlayer;
+import br.ufrgs.dunjeonsdragons.template.MapTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 import br.ufrgs.dunjeonsdragons.template.Template;
@@ -22,7 +23,7 @@ public class Main {
         final GamePlayer player = createPlayerFromInput(factory);
         gameManager.addEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME, player);
 
-        final GameMap map = factory.createMap("DEFAULT_MAP", player);
+        final GameMap map = factory.createMap("TOWER_1", player);
         gameManager.addEntity(GameMap.DEFAULT_MAP_ENTITY_NAME, map);
 
         while (true) {

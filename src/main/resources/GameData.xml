@@ -1,7 +1,7 @@
 <Data>
 
-
-    <Map identifier="DEFAULT_MAP" level="1">
+    <!-- Maps -->
+    <Map identifier="TOWER_1" level="1" nextMap="TOWER_2">
         <Level identifier="FIRST_LEVEL" name="The First Level">
             <Monsters>
                 <Monster>DRAKE</Monster>
@@ -9,7 +9,7 @@
             </Monsters>
         </Level>
 
-        <Level identifier="SECOND_LEVEL" name="The Second Level" level="2">
+        <Level identifier="SECOND_LEVEL" name="The Second Level">
             <Monsters>
                 <Monster>DRAKE</Monster>
                 <Monster>GOLEM</Monster>
@@ -17,17 +17,21 @@
         </Level>
     </Map>
 
-    <Monster identifier="MONSTER_1">
-        <Name>Test Monster</Name>
-    </Monster>
+    <Map identifier="TOWER_2" level="2">
+        <Level identifier="FIRST_LEVEL" name="The First Level">
+            <Monsters>
+                <Monster>DRAKE</Monster>
+                <Monster>GOLEM</Monster>
+            </Monsters>
+        </Level>
 
-    <Skill identifier="ATTACK">
-        <Effects>
-            <Effect ClassName="br.ufrgs.dunjeonsdragons.effects.DamageEffect">
-
-            </Effect>
-        </Effects>
-    </Skill>
+        <Level identifier="SECOND_LEVEL" name="The Second Level">
+            <Monsters>
+                <Monster>DRAKE</Monster>
+                <Monster>GOLEM</Monster>
+            </Monsters>
+        </Level>
+    </Map>
 
     <!--Races-->
     <Race identifier="HUMAN">
@@ -270,16 +274,16 @@
     </Monster>
 
     <ExperienceTable>
-        <Entry level="1" experience="0" />
-        <Entry level="2" experience="14" />
-        <Entry level="3" experience="54" />
-        <Entry level="4" experience="138" />
-        <Entry level="5" experience="298" />
-        <Entry level="6" experience="580" />
-        <Entry level="7" experience="1060" />
-        <Entry level="8" experience="1850" />
-        <Entry level="9" experience="3130" />
-        <Entry level="10" experience="5166" />
+        <Entry level="1" experience="0"/>
+        <Entry level="2" experience="14"/>
+        <Entry level="3" experience="54"/>
+        <Entry level="4" experience="138"/>
+        <Entry level="5" experience="298"/>
+        <Entry level="6" experience="580"/>
+        <Entry level="7" experience="1060"/>
+        <Entry level="8" experience="1850"/>
+        <Entry level="9" experience="3130"/>
+        <Entry level="10" experience="5166"/>
     </ExperienceTable>
 
 </Data>
