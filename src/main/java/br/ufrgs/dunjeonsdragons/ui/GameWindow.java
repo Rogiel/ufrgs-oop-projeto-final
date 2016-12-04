@@ -9,8 +9,10 @@ import br.ufrgs.dunjeonsdragons.model.GamePlayer;
 import br.ufrgs.dunjeonsdragons.template.ExperienceTableEntry;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.PrintStream;
 import java.text.NumberFormat;
 
 /**
@@ -20,7 +22,7 @@ public class GameWindow {
     public JPanel panel1;
     private JButton attackButton;
     private JButton nextMapButton;
-    private JTextPane textPane1;
+    private JTextPane logPanel;
     private JButton combatButton;
     private JLabel playerNameField;
     private JLabel playerLevelField;
@@ -39,9 +41,11 @@ public class GameWindow {
     private JLabel playerRaceField;
     private JLabel playerClassField;
     private JButton transferClassButton;
-
+    private JScrollPane logScrollPane;
 
     private final GameManager gameManager;
+
+    private PrintStream originalOutputStream;
 
     public GameWindow(final GameManager gameManager) {
         this.gameManager = gameManager;
@@ -52,6 +56,19 @@ public class GameWindow {
         nextMapButton.addActionListener(e -> nextMap());
         resetMapButton.addActionListener(e -> resetMap());
         transferClassButton.addActionListener(e -> executeClassTransfer());
+
+//        originalOutputStream = System.out;
+        PrintStream outputStream = new PrintStream(System.out) {
+            @Override
+            public void println(String x) {
+                super.println(x);
+                logPanel.setText(
+                        logPanel.getText() + "\n" + x
+                );
+                logScrollPane.scrollRectToVisible(new Rectangle(0, logPanel.getBounds(null).height, 1, 1));
+            }
+        };
+        System.setOut(outputStream);
 
         updateUI();
     }
