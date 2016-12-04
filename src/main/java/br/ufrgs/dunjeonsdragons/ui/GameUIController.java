@@ -160,7 +160,7 @@ public class GameUIController {
         System.out.println("\tExperience: " + NumberFormat.getNumberInstance().format(character.getExperience()));
     }
 
-    private void handleCombat(StringTokenizer tokenizer) {
+    private void handleCombat(final StringTokenizer tokenizer) {
         //TODO implementar attack + status enquanto vida !=0
         handleAttack(tokenizer);
         handleStatus(tokenizer);
