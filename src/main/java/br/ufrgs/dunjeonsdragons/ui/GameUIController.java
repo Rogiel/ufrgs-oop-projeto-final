@@ -118,8 +118,11 @@ public class GameUIController {
                 System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(monster.getHealth()));
                 System.out.println("\tDamage: " + monster.getDamage());
             }
-    }}
 
+
+
+        }
+    }
     private void handleAttack(final StringTokenizer tokenizer) {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
