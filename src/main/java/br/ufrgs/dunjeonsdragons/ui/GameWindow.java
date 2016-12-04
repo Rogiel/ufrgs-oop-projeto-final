@@ -95,7 +95,7 @@ public class GameWindow {
         experienceBar.setValue((int) player.getExperience() - (int) player.getMinimumExperienceForCurrentLevel());
 
         final GameMap gameMap = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
-        gameProgressBar.setMaximum(gameMap.getLevelCountInMap());
+        gameProgressBar.setMaximum(gameMap.getLevelCountInMap() - 1);
         gameProgressBar.setValue(gameMap.getCurrentLevelIndex());
 
         nextMapButton.setEnabled(gameMap.getState() == GameMap.State.MAP_COMPLETE);
