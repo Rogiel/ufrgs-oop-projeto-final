@@ -307,7 +307,7 @@
 
     <Monster identifier="BOSS">
         <Name>Boss</Name>
-        <DamagePerLevel>10</DamagePerLevel>
+        <DamagePerLevel>8</DamagePerLevel>
         <HealthPerLevel>70</HealthPerLevel>
         <ExperiencePerLevel>5</ExperiencePerLevel>
 
