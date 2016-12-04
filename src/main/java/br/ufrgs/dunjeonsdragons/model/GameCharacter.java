@@ -66,7 +66,7 @@ public abstract class GameCharacter extends GameObject {
         final double targetHealth = target.getHealth();
         target.setHealth(targetHealth - getDamage());
 
-        System.out.println(getName() + " dealt " + getDamage() + " damage to " + target.getName());
+        System.out.println(getName() + " dealt " + getDamage() + " damage to " + target.getName() + " (" + target.getHealth() + "/" + target.getMaxHealth() + ")");
 
         if (target.getHealth() == 0) {
             didKill(target);
