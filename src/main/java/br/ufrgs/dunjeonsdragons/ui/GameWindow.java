@@ -39,6 +39,8 @@ public class GameWindow {
     private JLabel playerRaceField;
     private JLabel playerClassField;
     private JButton transferClassButton;
+    private JLabel currentTowerLevel;
+    private JLabel maxTowerLevel;
 
 
     private final GameManager gameManager;
@@ -79,6 +81,9 @@ public class GameWindow {
         gameProgressBar.setValue(gameMap.getCurrentLevelIndex());
 
         nextMapButton.setEnabled(gameMap.getState() == GameMap.State.MAP_COMPLETE);
+
+        maxTowerLevel.setText("10");
+        currentTowerLevel.setText(Integer.toString((int) gameMap.getMapLevel()));
 
         towerAscencionBar.setMaximum(10);
         towerAscencionBar.setValue((int) gameMap.getMapLevel());
