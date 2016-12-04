@@ -83,6 +83,18 @@ public class PlayerClassTemplate extends Template {
     @XmlElement(name = "PrimaryStat")
     private String primaryStat;
 
+    /**
+     * A flag that indicates if the class can execute a class transfer
+     */
+    @XmlElement(name = "AllowClassTransfer")
+    private boolean allowClassTransfer;
+
+    /**
+     * The level at which the player can execute a class transfer
+     */
+    @XmlElement(name = "ClassTransferLevel")
+    private int classTransferLevel;
+
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -149,5 +161,13 @@ public class PlayerClassTemplate extends Template {
 
     public List<PlayerClassTemplate> getSubclasses() {
         return subclasses;
+    }
+
+    public boolean isAllowClassTransfer() {
+        return allowClassTransfer;
+    }
+
+    public int getClassTransferLevel() {
+        return classTransferLevel;
     }
 }

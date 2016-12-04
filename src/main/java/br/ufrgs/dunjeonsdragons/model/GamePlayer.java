@@ -144,11 +144,19 @@ public class GamePlayer extends GameCharacter {
     }
 
     public boolean hasSubclassOptions() {
-        // TODO check if the player has subclass options
-        return false;
+        return classTemplate.isAllowClassTransfer() && classTemplate.getClassTransferLevel() >= level;
     }
 
     public List<PlayerClassTemplate> getSubclassOptions() {
+        if (hasSubclassOptions()) {
+            final List<PlayerClassTemplate> list = new ArrayList<>();
+            for (final PlayerClassTemplate subclassTemplate : this.classTemplate.getSubclasses()) {
+                if (subclassTemplate.getRaceRestrictions().contains(raceTemplate)) {
+                    list.add(subclassTemplate);
+                }
+            }
+            return list;
+        }
         return new ArrayList<>();
     }
 
@@ -211,7 +219,6 @@ public class GamePlayer extends GameCharacter {
         }
         return this.experience;
     }
-
 
 
     // -----------------------------------------------------------------------------------------------------------------

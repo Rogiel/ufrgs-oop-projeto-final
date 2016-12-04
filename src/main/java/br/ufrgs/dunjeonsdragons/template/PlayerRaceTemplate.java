@@ -44,7 +44,7 @@ import java.util.List;
 public class PlayerRaceTemplate extends Template {
 
     /**
-     *
+     * The race name
      */
     @XmlElement(name = "Name")
     private String name;

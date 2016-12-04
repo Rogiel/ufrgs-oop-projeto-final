@@ -35,6 +35,9 @@ public class GameWindow {
     private JButton resetMapButton;
     private JLabel monsterDamageField;
     private JLabel playerDamageField;
+    private JLabel playerRaceField;
+    private JLabel playerClassField;
+    private JButton transferClassButton;
 
     private final GameManager gameManager;
 
@@ -46,6 +49,7 @@ public class GameWindow {
 //        nextLevelButton.addActionListener(e -> nextLevel());
         nextMapButton.addActionListener(e -> nextMap());
         resetMapButton.addActionListener(e -> resetMap());
+        transferClassButton.addActionListener(e -> executeClassTransfer());
 
         updateUI();
     }
@@ -59,6 +63,11 @@ public class GameWindow {
         playerHpBar.setMaximum((int) (double) player.getMaxHealth());
         playerHpBar.setValue((int) (double) player.getHealth());
         playerDamageField.setText(Integer.toString((int) player.getDamage()));
+
+        playerRaceField.setText(player.getRaceTemplate().getName());
+        playerClassField.setText(player.getClassTemplate().getName());
+
+        transferClassButton.setEnabled(player.hasSubclassOptions());
 
         experienceBar.setMaximum((int) player.getExperienceRequiredForNextLevel());
         experienceBar.setValue((int) player.getExperience());
@@ -129,16 +138,6 @@ public class GameWindow {
         updateUI();
     }
 
-    private void nextLevel() {
-        final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
-        if (!map.getCurrentLevel().isComplete()) {
-            System.err.println("Current level is not complete.");
-            return;
-        }
-        map.nextLevel();
-        updateUI();
-    }
-
     private void nextMap() {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
         if (map.getState() != GameMap.State.MAP_COMPLETE) {
@@ -149,6 +148,17 @@ public class GameWindow {
         updateUI();
     }
 
+    private void executeClassTransfer() {
+        final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        if(player.hasSubclassOptions()) {
+            final ClassTransferDialog classTransferDialog = new ClassTransferDialog(player.getSubclassOptions());
+            classTransferDialog.setVisible(true);
+            if(classTransferDialog.getSelectedPlayerClassTemplate() != null) {
+                player.transferClass(classTransferDialog.getSelectedPlayerClassTemplate());
+            }
+        }
+    }
+
     private void resetMap() {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
         map.resetMap();
@@ -156,23 +166,6 @@ public class GameWindow {
     }
 
     private void handleStatus() {
-        final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName() + " Level: " + character.getLevel());
-        System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(character.getHealth()));
-        System.out.println("\tDamage: " + NumberFormat.getNumberInstance().format(character.getDamage()));
-
-        final GameLevel level = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
-        if (level != null) {
-            final GameMonster monster = level.getMonster();
-            if (monster == null) {
-                System.out.println("Monster:");
-                System.out.println("\tNo monster on current level");
-            } else {
-                System.out.println("Monster: " + monster.getName());
-                System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(monster.getHealth()));
-                System.out.println("\tDamage: " + monster.getDamage());
-            }
-        }
         updateUI();
     }
 }
