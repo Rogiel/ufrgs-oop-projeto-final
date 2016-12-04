@@ -29,6 +29,13 @@ public class GameMap extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    /**
+     * The map level
+     */
+    private long level = 1;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     public enum State {
         RUNNING,
         VICTORY,
@@ -57,7 +64,7 @@ public class GameMap extends GameObject {
      * Create a new game map instance
      *
      * @param template the map template
-     * @param player the human player on the map
+     * @param player   the human player on the map
      */
     public GameMap(final MapTemplate template, final GamePlayer player) {
         this.template = template;
@@ -76,7 +83,7 @@ public class GameMap extends GameObject {
 
         gameManager.triggerEvent(new GameEvent());
 
-        if(player.isDead()) {
+        if (player.isDead()) {
             state = State.DEFEAT;
         }
     }
@@ -92,18 +99,27 @@ public class GameMap extends GameObject {
         currentLevelIndex++;
 
         // create the next level
-//        if (currentLevelIndex >= template.getLevels().size()) {
-//            state = State.VICTORY;
-//            return;
-//        }
+        if (currentLevelIndex >= template.getLevels().size()) {
+            state = State.VICTORY;
+            return;
+        }
 
         final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
-        final GameLevel level = new GameLevel(levelTemplate, player, template.getLevel());
+        final GameLevel level = new GameLevel(levelTemplate, player, this.level);
 
         // add the next level entity
         gameManager.addEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME, level);
 
         this.currentLevel = level;
+    }
+
+    /**
+     * Advances to the next map
+     */
+    public void nextMap() {
+        this.level++;
+        currentLevelIndex = -1;
+        nextLevel();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -115,7 +131,7 @@ public class GameMap extends GameObject {
         uiController = new GameUIController(gameManager);
 
         final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
-        final GameLevel level = new GameLevel(levelTemplate, player, template.getLevel());
+        final GameLevel level = new GameLevel(levelTemplate, player, this.level);
         gameManager.addEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME, level);
         this.currentLevel = level;
     }

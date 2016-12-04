@@ -11,12 +11,6 @@ public class MapTemplate extends Template {
     /**
      * The map level (the level the monster will inherit)
      */
-    @XmlAttribute(name = "level")
-    private int level;
-
-    /**
-     * The map level (the level the monster will inherit)
-     */
     @XmlAttribute(name = "nextMap")
     @XmlIDREF
     private MapTemplate nextMap;
@@ -30,10 +24,6 @@ public class MapTemplate extends Template {
     private List<LevelTemplate> levels;
 
     // -----------------------------------------------------------------------------------------------------------------
-
-    public int getLevel() {
-        return level;
-    }
 
     public MapTemplate getNextMap() {
         return nextMap;

@@ -16,6 +16,7 @@ public class GameUIController {
 
     private static final String ATTACK_COMMAND = "attack";
     private static final String NEXT_LEVEL_COMMAND = "next-level";
+    private static final String NEXT_MAP_COMMAND = "next-map";
     private static final String STATUS_COMMAND = "status";
     private static final String EXIT_COMMAND = "exit";
     private static final String SHOW_EXPERIENCE = "experience";
@@ -63,6 +64,10 @@ public class GameUIController {
             case NEXT_LEVEL_COMMAND:
                 nextLevel(tokenizer);
                 break;
+            case NEXT_MAP_COMMAND:
+                nextMap(tokenizer);
+                break;
+
             case STATUS_COMMAND:
                 handleStatus(tokenizer);
                 break;
@@ -104,6 +109,15 @@ public class GameUIController {
             return;
         }
         map.nextLevel();
+    }
+
+    private void nextMap(final StringTokenizer tokenizer) {
+        final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
+        if (map.getState() != GameMap.State.VICTORY) {
+            System.err.println("You must first win this map before going to the next.");
+            return;
+        }
+        map.nextMap();
     }
 
     private void handleStatus(final StringTokenizer tokenizer) {
