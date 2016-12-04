@@ -78,7 +78,7 @@ public class GamePlayer extends GameCharacter {
     // -----------------------------------------------------------------------------------------------------------------
 
     public void transferClass(PlayerClassTemplate newClassTemplate) {
-        // TODO implement a check to assert if the player can trasnfer classes
+        // TODO implement a check to assert if the player can transfer classes
         classTemplate = newClassTemplate;
     }
 
