@@ -105,11 +105,11 @@ public class GameUIController {
         if (level != null) {
             final GameMonster monster = level.getMonster();
             System.out.println("Monster: " + monster.getName());
-            System.out.println("Damage: " + monster.getDamage());
             if (monster == null) {
                 System.out.println("\tNo monster on current level");
             } else {
                 System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(monster.getHealth()));
+                System.out.println("\tDamage: " + monster.getDamage());
             }
         }
     }
