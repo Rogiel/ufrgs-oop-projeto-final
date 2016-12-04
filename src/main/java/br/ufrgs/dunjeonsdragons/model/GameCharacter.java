@@ -14,11 +14,6 @@ public abstract class GameCharacter extends GameObject {
      */
     private double health;
 
-    /**
-     * A flag indicating if the target is dead
-     */
-    private boolean dead = false;
-
     // -----------------------------------------------------------------------------------------------------------------
 
     public abstract String getName();
@@ -28,7 +23,7 @@ public abstract class GameCharacter extends GameObject {
     public abstract double getMaxHealth();
 
     public void resetHealth() {
-        setHealth(getMaxHealth());
+        health = getMaxHealth();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -36,7 +31,7 @@ public abstract class GameCharacter extends GameObject {
     public abstract double getDamage();
 
     public void attack(GameCharacter target) {
-        if(isDead() || target.isDead()) {
+        if (isDead() || target.isDead()) {
             return;
         }
 
@@ -44,11 +39,16 @@ public abstract class GameCharacter extends GameObject {
         final double targetHealth = target.getHealth();
         target.setHealth(targetHealth - getDamage());
 
-        System.out.println(getName() + " dealt " + getDamage() + " to " + target.getName());
+        System.out.println(getName() + " dealt " + getDamage() + " damage to " + target.getName());
 
         if (target.getHealth() == 0) {
             didKill(target);
+            target.didDie(this);
         }
+    }
+
+    public void didDie(GameCharacter killer) {
+        System.out.println(getName() + " has died to " + killer.getName());
     }
 
     public void didKill(GameCharacter character) {
@@ -69,18 +69,15 @@ public abstract class GameCharacter extends GameObject {
     }
 
     public void setHealth(double health) {
-        if (isDead()) {
-            return;
-        }
         if (health <= 0) {
-            health = 0;
-            dead = true;
+            this.health = 0;
+            return;
         }
         this.health = health;
     }
 
     public boolean isDead() {
-        return dead;
+        return health == 0;
     }
 
 }

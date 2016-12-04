@@ -45,10 +45,10 @@ public class GameUIController {
 
     public boolean handleUserInput() throws IOException {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
-//        if (map != null && map.getState() != GameMap.State.RUNNING) {
-//            System.out.println("Game over.");
-//            return true;
-//        }
+        if (map != null && map.getState() == GameMap.State.DEFEAT) {
+            System.out.println("You lose. Game over.");
+            return true;
+        }
 
         final String commandLine = reader.readLine();
         final StringTokenizer tokenizer = new StringTokenizer(commandLine);
@@ -94,6 +94,16 @@ public class GameUIController {
         }
 
         return false;
+    }
+
+    private void handleCombat(StringTokenizer tokenizer) {
+        final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+        final GameMonster monster = gameLevel.getMonster();
+
+        while(!monster.isDead()) {
+            handleAttack(tokenizer);
+        }
+        handleStatus(tokenizer);
     }
 
     private void handleAttack(final StringTokenizer tokenizer) {
@@ -158,12 +168,6 @@ public class GameUIController {
         final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
         System.out.println("\tExperience: " + NumberFormat.getNumberInstance().format(character.getExperience()));
-    }
-
-    private void handleCombat(final StringTokenizer tokenizer) {
-        //TODO implementar attack + status enquanto vida !=0
-        handleAttack(tokenizer);
-        handleStatus(tokenizer);
     }
 
 }

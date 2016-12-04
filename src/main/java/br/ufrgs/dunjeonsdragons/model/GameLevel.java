@@ -20,7 +20,7 @@ public class GameLevel extends GameObject {
     /**
      * The level number
      */
-    private final long levelNumber;
+    private long levelNumber = 1;
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -60,6 +60,8 @@ public class GameLevel extends GameObject {
         super.didAddToGameManager(gameManager);
 
         monster = new GameMonster(template.getRandomMonster(), (int) levelNumber);
+        monster.resetHealth();
+
         gameManager.addEntity("LevelMonster", monster);
     }
 
