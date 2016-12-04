@@ -7,10 +7,7 @@ import br.ufrgs.dunjeonsdragons.model.GameMonster;
 import br.ufrgs.dunjeonsdragons.model.GamePlayer;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.NumberFormat;
-import java.util.StringTokenizer;
 
 /**
  * Created by Gustavo on 04/12/2016.
@@ -22,6 +19,12 @@ public class GameWindow {
     private JButton nextMapButton;
     private JTextPane textPane1;
     private JButton combatButton;
+    private JLabel playerNameField;
+    private JLabel playerLevelField;
+    private JLabel playerExperienceField;
+    private JLabel playerHpField;
+    private JLabel monsterHpField;
+    private JLabel monsterNameLabel;
 
     private final GameManager gameManager;
 
@@ -30,15 +33,41 @@ public class GameWindow {
 
         attackButton.addActionListener(e -> handleAttack());
         combatButton.addActionListener(e -> handleCombat());
+        nextLevelButton.addActionListener(e -> nextLevel());
+        nextMapButton.addActionListener(e -> nextMap());
+
+        updateUI();
     }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
 
+    private void updateUI() {
+        final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+        playerNameField.setText(player.getName());
+        playerLevelField.setText(Integer.toString(player.getLevel()));
+        playerHpField.setText(Integer.toString((int) player.getHealth()) + "/" + Integer.toString((int)player.getMaxHealth()));
+        playerExperienceField.setText(Long.toString(player.getExperience()));
+
+        final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+        if(gameLevel != null) {
+            final GameMonster monster = gameLevel.getMonster();
+            if (monster != null) {
+                monsterNameLabel.setText(monster.getName());
+                monsterHpField.setText(Integer.toString((int) monster.getHealth()) + "/" + Integer.toString((int) monster.getMaxHealth()));
+            }
+        }
+    }
+
     private void handleCombat() {
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         final GameMonster monster = gameLevel.getMonster();
+        final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
+
+        if(player.isDead()) {
+            return;
+        }
 
         while (!monster.isDead()) {
             handleAttack();
@@ -59,7 +88,7 @@ public class GameWindow {
             final GameMap gameMap = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
             gameMap.nextLevel();
         }
-
+        updateUI();
     }
 
     private void nextLevel() {
@@ -69,6 +98,7 @@ public class GameWindow {
             return;
         }
         map.nextLevel();
+        updateUI();
     }
 
     private void nextMap() {
@@ -78,11 +108,13 @@ public class GameWindow {
             return;
         }
         map.nextMap();
+        updateUI();
     }
 
     private void resetMap() {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
         map.resetMap();
+        updateUI();
     }
 
     private void handleStatus() {
@@ -103,11 +135,6 @@ public class GameWindow {
                 System.out.println("\tDamage: " + monster.getDamage());
             }
         }
-    }
-
-    private void handleExperience() {
-        final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
-        System.out.println("\tExperience: " + NumberFormat.getNumberInstance().format(character.getExperience()));
+        updateUI();
     }
 }
