@@ -18,7 +18,7 @@ public class GameUIController {
     private static final String NEXT_LEVEL_COMMAND = "next-level";
     private static final String STATUS_COMMAND = "status";
     private static final String EXIT_COMMAND = "exit";
-
+    private static final String SHOW_EXPERIENCE = "experience";
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -67,6 +67,9 @@ public class GameUIController {
                 handleStatus(tokenizer);
                 break;
 
+            case SHOW_EXPERIENCE:
+                return false;
+
             case EXIT_COMMAND:
                 return false;
 
@@ -96,7 +99,6 @@ public class GameUIController {
         final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
         System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(character.getHealth()));
-        System.out.println("\tEnergy: " + NumberFormat.getNumberInstance().format(character.getEnergy()));
 
         final GameLevel level = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         if (level != null) {
@@ -106,7 +108,6 @@ public class GameUIController {
                 System.out.println("\tNo monster on current level");
             } else {
                 System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(monster.getHealth()));
-                System.out.println("\tEnergy: " + NumberFormat.getNumberInstance().format(monster.getEnergy()));
             }
         }
     }
