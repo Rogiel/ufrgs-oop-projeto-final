@@ -34,7 +34,6 @@
 
 package br.ufrgs.dunjeonsdragons.model;
 
-import br.ufrgs.dunjeonsdragons.event.GameEvent;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.template.LevelTemplate;
 import br.ufrgs.dunjeonsdragons.template.MapTemplate;
@@ -113,8 +112,6 @@ public class GameMap extends GameObject {
             e.printStackTrace();
         }
 
-        gameManager.triggerEvent(new GameEvent());
-
         if (player.isDead()) {
             state = State.DEFEAT;
         }
@@ -161,6 +158,7 @@ public class GameMap extends GameObject {
      */
     public void resetMap() {
         currentLevelIndex = -1;
+        state = State.RUNNING;
         nextLevel();
     }
 

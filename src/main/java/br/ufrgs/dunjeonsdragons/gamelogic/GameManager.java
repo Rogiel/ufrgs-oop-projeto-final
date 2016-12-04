@@ -34,9 +34,6 @@
 
 package br.ufrgs.dunjeonsdragons.gamelogic;
 
-import br.ufrgs.dunjeonsdragons.event.GameEvent;
-import br.ufrgs.dunjeonsdragons.event.GameEventListener;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,11 +45,6 @@ public class GameManager {
      * A list entities currently managed by the game
      */
     private Map<String, GameEntity> entities;
-
-    /**
-     * A list of active game event listeners
-     */
-    private List<GameEventListener> eventListeners = new ArrayList<>();
 
     /**
      * The current game turn
@@ -92,28 +84,12 @@ public class GameManager {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void addEventListener(GameEventListener eventListener) {
-        this.eventListeners.add(eventListener);
-    }
-
-    public void removeEventListener(GameEventListener eventListener) {
-        this.eventListeners.remove(eventListener);
-    }
-
-    // -----------------------------------------------------------------------------------------------------------------
-
     public void performTurn() {
         final List<GameEntity> entities = new ArrayList<>(this.entities.values());
         for (GameEntity entity : entities) {
             entity.performTurn(turn);
         }
         turn++;
-    }
-
-    public void triggerEvent(final GameEvent event) {
-        for (final GameEventListener listener : eventListeners) {
-            listener.onGameEvent(event);
-        }
     }
 
 }
