@@ -200,6 +200,18 @@ public class GamePlayer extends GameCharacter {
         return experience;
     }
 
+    /**
+     * @return the amount of experience points required to the next level
+     */
+    public long getExperienceRequiredForNextLevel() {
+        for (ExperienceTableEntry entry : experienceTable) {
+            if (this.level + 1 == entry.getLevel()) {
+                return entry.getExperience();
+            }
+        }
+        return this.experience;
+    }
+
 
 
     // -----------------------------------------------------------------------------------------------------------------

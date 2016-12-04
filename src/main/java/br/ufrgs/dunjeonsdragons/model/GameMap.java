@@ -179,6 +179,12 @@ public class GameMap extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public int getLevelCountInMap() {
+        return this.template.getLevels().size();
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     /**
      * @return the level being played
      */
@@ -191,5 +197,9 @@ public class GameMap extends GameObject {
      */
     public State getState() {
         return state;
+    }
+
+    public int getCurrentLevelIndex() {
+        return currentLevelIndex;
     }
 }

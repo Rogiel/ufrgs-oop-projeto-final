@@ -52,16 +52,16 @@ public class GameWindow {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         playerNameField.setText(player.getName());
         playerLevelField.setText(Integer.toString(player.getLevel()));
-        playerHpField.setText(Integer.toString((int) player.getHealth()) + "/" + Integer.toString((int)player.getMaxHealth()));
+        playerHpField.setText(Integer.toString((int) player.getHealth()) + "/" + Integer.toString((int) player.getMaxHealth()));
         playerExperienceField.setText(Long.toString(player.getExperience()));
         playerHpBar.setMaximum((int) (double) player.getMaxHealth());
         playerHpBar.setValue((int) (double) player.getHealth());
 
-        experienceBar.setMaximum(14); // TODO arrumar para sincronizar com o lvl (deixei 14 pq é a exp pra upar 1 vez)
-        experienceBar.setValue((int) (long) (player.getExperience()));
+        experienceBar.setMaximum((int) player.getExperienceRequiredForNextLevel());
+        experienceBar.setValue((int) player.getExperience());
 
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
-        if(gameLevel != null) {
+        if (gameLevel != null) {
             final GameMonster monster = gameLevel.getMonster();
             if (monster != null) {
                 monsterNameLabel.setText(monster.getName());
@@ -70,8 +70,10 @@ public class GameWindow {
                 monsterHpBar.setValue((int) (double) monster.getHealth());
             }
         }
-        gameProgressBar.setMaximum(6);
-        // gameProgressBar.setValue( ??? ); TODO
+
+        final GameMap gameMap = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
+        gameProgressBar.setMaximum(gameMap.getLevelCountInMap());
+        gameProgressBar.setValue(gameMap.getCurrentLevelIndex());
     }
 
     private void handleCombat() {
@@ -79,7 +81,7 @@ public class GameWindow {
         final GameMonster monster = gameLevel.getMonster();
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
 
-        if(player.isDead()) {
+        if (player.isDead()) {
             return;
         }
 
@@ -92,6 +94,10 @@ public class GameWindow {
     private void handleAttack() {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
+
+        if (player.isDead()) {
+            return;
+        }
 
         player.attack(gameLevel.getMonster()); // player attacks mob
         if (!gameLevel.getMonster().isDead()) {
