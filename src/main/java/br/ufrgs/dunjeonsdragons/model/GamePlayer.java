@@ -144,7 +144,7 @@ public class GamePlayer extends GameCharacter {
     }
 
     public boolean hasSubclassOptions() {
-        return classTemplate.isAllowClassTransfer() && classTemplate.getClassTransferLevel() >= level;
+        return classTemplate.isAllowClassTransfer() && level >= classTemplate.getClassTransferLevel();
     }
 
     public List<PlayerClassTemplate> getSubclassOptions() {
