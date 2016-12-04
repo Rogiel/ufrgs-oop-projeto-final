@@ -62,7 +62,7 @@ public class Main {
 
         while (true) {
             gameManager.performTurn();
-            if (map.getState() != GameMap.State.RUNNING) {
+            if (map.getState() == GameMap.State.DEFEAT) {
                 break;
             }
         }

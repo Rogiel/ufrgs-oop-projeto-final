@@ -167,7 +167,7 @@ public class GameUIController {
 
     private void nextMap(final StringTokenizer tokenizer) {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
-        if (map.getState() != GameMap.State.VICTORY) {
+        if (map.getState() != GameMap.State.MAP_COMPLETE) {
             System.err.println("You must first win this map before going to the next.");
             return;
         }

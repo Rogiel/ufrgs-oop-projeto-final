@@ -97,8 +97,6 @@
     </Map>
 
 
-
-
     <!--Races-->
     <Race identifier="HUMAN">
         <Name>Human</Name>

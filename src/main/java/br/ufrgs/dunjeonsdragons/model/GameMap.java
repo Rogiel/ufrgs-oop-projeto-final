@@ -70,7 +70,8 @@ public class GameMap extends GameObject {
     public enum State {
         RUNNING,
         VICTORY,
-        DEFEAT
+        DEFEAT,
+        MAP_COMPLETE
     }
 
     private State state = State.RUNNING;
@@ -131,7 +132,7 @@ public class GameMap extends GameObject {
 
         // create the next level
         if (currentLevelIndex >= template.getLevels().size()) {
-            state = State.VICTORY;
+            state = State.MAP_COMPLETE;
             return;
         }
 
