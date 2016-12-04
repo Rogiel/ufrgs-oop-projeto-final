@@ -54,7 +54,7 @@ public class Main {
             builder.append(allowedClassTemplate.getIdentifier()+" - ");
         }
         builder.delete(builder.length() - 3, builder.length());
-        builder.append(")");
+        builder.append("): ");
 
         System.out.print(builder.toString());
         final String classe = reader.readLine();
