@@ -3,12 +3,11 @@ package br.ufrgs.dunjeonsdragons;
 import br.ufrgs.dunjeonsdragons.model.GameMap;
 import br.ufrgs.dunjeonsdragons.model.GameMonster;
 import br.ufrgs.dunjeonsdragons.model.GamePlayer;
-import br.ufrgs.dunjeonsdragons.template.MapTemplate;
-import br.ufrgs.dunjeonsdragons.template.MonsterTemplate;
-import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
-import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
+import br.ufrgs.dunjeonsdragons.template.*;
 import br.ufrgs.dunjeonsdragons.template.loader.TemplateLoader;
 import br.ufrgs.dunjeonsdragons.template.loader.XMLTemplateLoader;
+
+import java.util.List;
 
 /**
  * Created by Rogiel on 9/20/16.
@@ -26,7 +25,7 @@ public class GameEntityFactory {
      * @param classIdentifier the player class template identifier
      * @return a newly created GamePlayer object
      */
-    public GamePlayer createPlayer(String raceIdentifier, String classIdentifier) {
+    public GamePlayer createPlayer(String raceIdentifier, String classIdentifier, List<ExperienceTableEntry> experienceTable) {
         final PlayerRaceTemplate raceTemplate = (PlayerRaceTemplate) loader.load(raceIdentifier);
         final PlayerClassTemplate classTemplate = (PlayerClassTemplate) loader.load(classIdentifier);
 
@@ -46,7 +45,8 @@ public class GameEntityFactory {
 
         return new GamePlayer(
                 (PlayerRaceTemplate) loader.load(raceIdentifier),
-                (PlayerClassTemplate) loader.load(classIdentifier)
+                (PlayerClassTemplate) loader.load(classIdentifier),
+                experienceTable
         );
     }
 

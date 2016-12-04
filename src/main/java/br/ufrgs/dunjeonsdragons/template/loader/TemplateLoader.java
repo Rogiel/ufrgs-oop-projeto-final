@@ -1,6 +1,9 @@
 package br.ufrgs.dunjeonsdragons.template.loader;
 
+import br.ufrgs.dunjeonsdragons.template.ExperienceTableEntry;
 import br.ufrgs.dunjeonsdragons.template.Template;
+
+import java.util.List;
 
 /**
  * Created by Rogiel on 9/13/16.
@@ -14,5 +17,12 @@ public interface TemplateLoader {
      * @return the loaded template or NULL if the template was not found
      */
     Template load(String identifier);
+
+    /**
+     * Gets the experience table
+     *
+     * @return the experience table
+     */
+    public List<ExperienceTableEntry> getExperienceTable();
 
 }

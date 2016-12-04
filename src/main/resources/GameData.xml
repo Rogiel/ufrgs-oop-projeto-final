@@ -263,5 +263,8 @@
         <HealthPerLevel>5</HealthPerLevel>
     </Monster>
 
+    <ExperienceTable>
+        <Entry level="1" experience="1" />
+    </ExperienceTable>
 
 </Data>

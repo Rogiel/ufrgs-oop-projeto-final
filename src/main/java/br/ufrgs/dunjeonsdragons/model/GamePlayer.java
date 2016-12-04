@@ -1,5 +1,6 @@
 package br.ufrgs.dunjeonsdragons.model;
 
+import br.ufrgs.dunjeonsdragons.template.ExperienceTableEntry;
 import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 
@@ -13,6 +14,10 @@ public class GamePlayer extends GameCharacter {
 
     public static final String DEFAULT_PLAYER_ENTITY_NAME = "GamePlayer";
 
+    public static final int[][] EXPERIENCE_TABLE = {
+            {}
+    };
+
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -24,6 +29,11 @@ public class GamePlayer extends GameCharacter {
      * A template for the player race
      */
     private PlayerRaceTemplate raceTemplate;
+
+    /**
+     * The players experience table
+     */
+    List<ExperienceTableEntry> experienceTable;
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -44,9 +54,10 @@ public class GamePlayer extends GameCharacter {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public GamePlayer(PlayerRaceTemplate raceTemplate, PlayerClassTemplate classTemplate) {
+    public GamePlayer(PlayerRaceTemplate raceTemplate, PlayerClassTemplate classTemplate, List<ExperienceTableEntry> experienceTable) {
         this.raceTemplate = raceTemplate;
         this.classTemplate = classTemplate;
+        this.experienceTable = experienceTable;
         resetHealth();
     }
 
@@ -87,9 +98,13 @@ public class GamePlayer extends GameCharacter {
         classTemplate = newClassTemplate;
     }
 
-    public void addExperience(int experience) {
-        // TODO perform level up if necessary
-        this.experience += experience;
+    public void addExperience(int experienceToAdd) {
+        this.experience += experienceToAdd;
+        for (ExperienceTableEntry entry : experienceTable) {
+            if (entry.getExperience() >= this.experience && this.level < entry.getLevel()) {
+                this.level = (int) entry.getLevel();
+            }
+        }
     }
 
     public boolean hasSubclassOptions() {

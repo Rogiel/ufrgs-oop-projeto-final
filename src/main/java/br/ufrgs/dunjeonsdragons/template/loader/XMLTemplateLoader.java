@@ -5,10 +5,7 @@ import br.ufrgs.dunjeonsdragons.template.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlList;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
@@ -30,6 +27,8 @@ public class XMLTemplateLoader implements TemplateLoader {
      */
     private Map<String, Template> templates;
 
+    private List<ExperienceTableEntry> experienceTableEntries;
+
     /**
      * Creates a new XMLTemplateLoader from the given file
      *
@@ -45,6 +44,11 @@ public class XMLTemplateLoader implements TemplateLoader {
             loadXML();
         }
         return templates.get(identifier);
+    }
+
+    @Override
+    public List<ExperienceTableEntry> getExperienceTable() {
+        return experienceTableEntries;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -64,6 +68,13 @@ public class XMLTemplateLoader implements TemplateLoader {
                 @XmlElement(name = "Map", type = MapTemplate.class),
         })
         List<Template> templates;
+
+        /**
+         * The experience table
+         */
+        @XmlElementWrapper(name = "ExperienceTable")
+        @XmlElement(name = "Entry")
+        List<ExperienceTableEntry> experienceTable;
     }
 
     /**
@@ -75,12 +86,11 @@ public class XMLTemplateLoader implements TemplateLoader {
             JAXBContext context = JAXBContext.newInstance(GameDataRoot.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
-            ClassLoader classLoader = getClass().getClassLoader();
             GameDataRoot root = (GameDataRoot) unmarshaller.unmarshal(dataFile);
-
             for (Template t : root.templates) {
                 templates.put(t.getIdentifier(), t);
             }
+            experienceTableEntries = root.experienceTable;
         } catch (JAXBException e) {
             e.printStackTrace();
         }
