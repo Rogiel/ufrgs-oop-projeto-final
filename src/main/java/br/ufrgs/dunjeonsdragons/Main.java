@@ -13,7 +13,9 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, IOException {
         final GameEntityFactory factory = new GameEntityFactory();
         final GameManager gameManager = new GameManager();
-        System.out.print("Welcome To DunJeons & Dragons! \n\n~~~ AQUI VAI A LISTA DE COMANDOS~~~\n\n");
+
+        System.out.print("Welcome To DunJeons & Dragons! \n\n~~~ AQUI VAI A LISTA DE COMANDOS ~~~\n\n");
+
         final GamePlayer player = createPlayerFromInput(factory);
         gameManager.addEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME, player);
 
@@ -49,6 +51,7 @@ public class Main {
             player.setName(name);
         }
 
+        System.out.print("Character create succesful!");
         return player;
     }
 }
