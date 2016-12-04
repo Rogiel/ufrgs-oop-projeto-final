@@ -86,7 +86,7 @@ public class GamePlayer extends GameCharacter {
 
     @Override
     public void didKill(GameCharacter character) {
-        if(character instanceof GameMonster) {
+        if (character instanceof GameMonster) {
             addExperience(((GameMonster) character).getExperienceOnKill());
         }
     }
@@ -104,6 +104,7 @@ public class GamePlayer extends GameCharacter {
 
     public void addExperience(long experienceToAdd) {
         this.experience += experienceToAdd;
+        System.out.println(name + " got " + experienceToAdd + " experience points.");
         for (ExperienceTableEntry entry : experienceTable) {
             if (this.experience >= entry.getExperience() && this.level < entry.getLevel()) {
                 this.level = (int) entry.getLevel();
@@ -170,7 +171,7 @@ public class GamePlayer extends GameCharacter {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-
+    @Override
     public String getName() {
         return name;
     }

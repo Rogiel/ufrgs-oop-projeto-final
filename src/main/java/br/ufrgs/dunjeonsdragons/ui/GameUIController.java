@@ -103,7 +103,16 @@ public class GameUIController {
         final GamePlayer player = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
 
-        player.attack(gameLevel.getMonster());
+        player.attack(gameLevel.getMonster()); // player attacks mob
+        if (!gameLevel.getMonster().isDead()) {
+            gameLevel.getMonster().attack(player); // mob attacks player
+        }
+
+        if(gameLevel.isComplete()) {
+            final GameMap gameMap = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
+            gameMap.nextLevel();
+        }
+
     }
 
     private void nextLevel(final StringTokenizer tokenizer) {

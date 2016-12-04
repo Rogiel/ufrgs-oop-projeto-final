@@ -21,6 +21,10 @@ public abstract class GameCharacter extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public abstract String getName();
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     public abstract double getMaxHealth();
 
     public void resetHealth() {
@@ -32,11 +36,17 @@ public abstract class GameCharacter extends GameObject {
     public abstract double getDamage();
 
     public void attack(GameCharacter target) {
+        if(isDead() || target.isDead()) {
+            return;
+        }
+
         // take life out of the target
         final double targetHealth = target.getHealth();
         target.setHealth(targetHealth - getDamage());
 
-        if(target.getHealth() == 0) {
+        System.out.println(getName() + " dealt " + getDamage() + " to " + target.getName());
+
+        if (target.getHealth() == 0) {
             didKill(target);
         }
     }
@@ -59,7 +69,7 @@ public abstract class GameCharacter extends GameObject {
     }
 
     public void setHealth(double health) {
-        if(isDead()) {
+        if (isDead()) {
             return;
         }
         if (health <= 0) {

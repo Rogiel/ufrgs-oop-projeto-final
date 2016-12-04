@@ -50,9 +50,7 @@ public class GameLevel extends GameObject {
 
     @Override
     public void performTurn(long turn) {
-        if (monster.isDead()) {
-            complete = true;
-        }
+
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -78,6 +76,6 @@ public class GameLevel extends GameObject {
     }
 
     public boolean isComplete() {
-        return complete;
+        return monster.isDead();
     }
 }

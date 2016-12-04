@@ -63,6 +63,7 @@ public class GameMonster extends GameCharacter {
     /**
      * @return the monster name
      */
+    @Override
     public String getName() {
         return template.getName();
     }
