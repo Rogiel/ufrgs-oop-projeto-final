@@ -67,7 +67,7 @@ public class Main {
             System.err.println("Race " + race + " cannot be of class " + classe);
         }
 
-        final GamePlayer player = factory.createPlayer(race, classe);
+        final GamePlayer player = factory.createPlayer(race, classe, factory.loader.getExperienceTable());
         if (!name.isEmpty()) {
             player.setName(name);
         }

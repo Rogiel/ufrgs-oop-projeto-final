@@ -98,7 +98,7 @@ public class GameMap extends GameObject {
         }
 
         final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
-        final GameLevel level = new GameLevel(levelTemplate, player);
+        final GameLevel level = new GameLevel(levelTemplate, player, template.getLevel());
 
         // add the next level entity
         gameManager.addEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME, level);
@@ -115,7 +115,7 @@ public class GameMap extends GameObject {
         uiController = new GameUIController(gameManager);
 
         final LevelTemplate levelTemplate = template.getLevels().get(currentLevelIndex);
-        final GameLevel level = new GameLevel(levelTemplate, player);
+        final GameLevel level = new GameLevel(levelTemplate, player, template.getLevel());
         gameManager.addEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME, level);
         this.currentLevel = level;
     }

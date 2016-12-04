@@ -17,6 +17,11 @@ public class GameLevel extends GameObject {
      */
     private final LevelTemplate template;
 
+    /**
+     * The level number
+     */
+    private final int levelNumber;
+
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -35,9 +40,10 @@ public class GameLevel extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public GameLevel(final LevelTemplate template, final GamePlayer player) {
+    public GameLevel(final LevelTemplate template, final GamePlayer player, final int level) {
         this.template = template;
         this.player = player;
+        this.levelNumber = level;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -55,8 +61,7 @@ public class GameLevel extends GameObject {
     public void didAddToGameManager(GameManager gameManager) {
         super.didAddToGameManager(gameManager);
 
-        // TODO do not use player level here
-        monster = new GameMonster(template.getMonster(), player.getLevel());
+        monster = new GameMonster(template.getRandomMonster(), levelNumber);
         monster.setHealth(10);
 
         gameManager.addEntity("LevelMonster", monster);

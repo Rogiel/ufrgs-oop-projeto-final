@@ -12,12 +12,22 @@ import java.util.List;
 public class MapTemplate extends Template {
 
     /**
+     * The map level (the level the monster will inherit)
+     */
+    @XmlAttribute(name = "level")
+    private int level;
+
+    /**
      * The levels on the map
      */
     @XmlElements({
             @XmlElement(name = "Level", type = LevelTemplate.class)
     })
     private List<LevelTemplate> levels;
+
+    public int getLevel() {
+        return level;
+    }
 
     public List<LevelTemplate> getLevels() {
         return levels;

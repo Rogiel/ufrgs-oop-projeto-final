@@ -1,13 +1,19 @@
 <Data>
 
 
-    <Map identifier="DEFAULT_MAP">
+    <Map identifier="DEFAULT_MAP" level="1">
         <Level identifier="FIRST_LEVEL" name="The First Level">
-            <Monster>MONSTER_1</Monster>
+            <Monsters>
+                <Monster>DRAKE</Monster>
+                <Monster>GOLEM</Monster>
+            </Monsters>
         </Level>
 
-        <Level identifier="SECOND_LEVEL" name="The Second Level">
-            <Monster>MONSTER_1</Monster>
+        <Level identifier="SECOND_LEVEL" name="The Second Level" level="2">
+            <Monsters>
+                <Monster>DRAKE</Monster>
+                <Monster>GOLEM</Monster>
+            </Monsters>
         </Level>
     </Map>
 
