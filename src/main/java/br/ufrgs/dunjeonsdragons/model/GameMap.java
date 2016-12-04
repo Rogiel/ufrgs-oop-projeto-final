@@ -106,12 +106,6 @@ public class GameMap extends GameObject {
 
     @Override
     public void performTurn(long turn) {
-        try {
-            uiController.handleUserInput();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         if (player.isDead()) {
             state = State.DEFEAT;
         }

@@ -39,7 +39,11 @@ import br.ufrgs.dunjeonsdragons.model.GamePlayer;
 import br.ufrgs.dunjeonsdragons.template.PlayerClassTemplate;
 import br.ufrgs.dunjeonsdragons.template.PlayerRaceTemplate;
 import br.ufrgs.dunjeonsdragons.template.Template;
+import br.ufrgs.dunjeonsdragons.ui.CreatePlayerDialog;
+import br.ufrgs.dunjeonsdragons.ui.GameUIController;
+import br.ufrgs.dunjeonsdragons.ui.GameWindow;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -54,18 +58,29 @@ public class Main {
 
         System.out.print("Welcome To DunJeons & Dragons! \n\n~~~ AQUI VAI A LISTA DE COMANDOS ~~~\n\n");
 
-        final GamePlayer player = createPlayerFromInput(factory);
+        final GamePlayer player = createPlayerFromDialog(factory);
         gameManager.addEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME, player);
 
         final GameMap map = factory.createMap("TOWER_1", player);
         gameManager.addEntity(GameMap.DEFAULT_MAP_ENTITY_NAME, map);
 
-        while (true) {
-            gameManager.performTurn();
-            if (map.getState() == GameMap.State.DEFEAT) {
-                break;
-            }
-        }
+//        final GameUIController uiController = new GameUIController(gameManager);
+
+        final GameWindow gameWindow = new GameWindow(gameManager);
+        final JFrame frame = new JFrame();
+        frame.setContentPane(gameWindow.panel1);
+
+        frame.pack();
+        frame.setVisible(true);
+
+//        while (true) {
+//
+////            uiController.handleUserInput();
+////            gameManager.performTurn();
+////            if (map.getState() == GameMap.State.DEFEAT) {
+////                break;
+////            }
+//        }
     }
 
     private static GamePlayer createPlayerFromInput(final GameEntityFactory factory) throws IOException {
@@ -109,5 +124,15 @@ public class Main {
 
         System.out.print("Character creation succesful! \n");
         return player;
+    }
+
+    private static GamePlayer createPlayerFromDialog(final GameEntityFactory factory) {
+        final CreatePlayerDialog createPlayerDialog = new CreatePlayerDialog(factory);
+        createPlayerDialog.pack();
+        createPlayerDialog.setVisible(true);
+
+        System.out.print("Character creation successful! \n");
+
+        return createPlayerDialog.createPlayer();
     }
 }
