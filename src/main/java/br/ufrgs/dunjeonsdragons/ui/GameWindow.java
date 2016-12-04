@@ -1,10 +1,12 @@
 package br.ufrgs.dunjeonsdragons.ui;
 
+import br.ufrgs.dunjeonsdragons.GameEntityFactory;
 import br.ufrgs.dunjeonsdragons.gamelogic.GameManager;
 import br.ufrgs.dunjeonsdragons.model.GameLevel;
 import br.ufrgs.dunjeonsdragons.model.GameMap;
 import br.ufrgs.dunjeonsdragons.model.GameMonster;
 import br.ufrgs.dunjeonsdragons.model.GamePlayer;
+import br.ufrgs.dunjeonsdragons.template.ExperienceTableEntry;
 
 import javax.swing.*;
 import java.text.NumberFormat;
@@ -15,7 +17,6 @@ import java.text.NumberFormat;
 public class GameWindow {
     public JPanel panel1;
     private JButton attackButton;
-    private JButton nextLevelButton;
     private JButton nextMapButton;
     private JTextPane textPane1;
     private JButton combatButton;
@@ -25,6 +26,9 @@ public class GameWindow {
     private JLabel playerHpField;
     private JLabel monsterHpField;
     private JLabel monsterNameLabel;
+    private JProgressBar experienceBar;
+    private JProgressBar playerHpBar;
+    private JProgressBar monsterHpBar;
 
     private final GameManager gameManager;
 
@@ -33,7 +37,7 @@ public class GameWindow {
 
         attackButton.addActionListener(e -> handleAttack());
         combatButton.addActionListener(e -> handleCombat());
-        nextLevelButton.addActionListener(e -> nextLevel());
+//        nextLevelButton.addActionListener(e -> nextLevel());
         nextMapButton.addActionListener(e -> nextMap());
 
         updateUI();
@@ -49,6 +53,12 @@ public class GameWindow {
         playerLevelField.setText(Integer.toString(player.getLevel()));
         playerHpField.setText(Integer.toString((int) player.getHealth()) + "/" + Integer.toString((int)player.getMaxHealth()));
         playerExperienceField.setText(Long.toString(player.getExperience()));
+        playerHpBar.setMaximum((int) (double) player.getMaxHealth());
+        playerHpBar.setValue((int) (double) player.getHealth());
+
+        experienceBar.setMaximum(14); // TODO arrumar para sincronizar com o lvl (deixei 14 pq é a exp pra upar 1 vez)
+        experienceBar.setValue((int) (long) (player.getExperience()));
+
 
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         if(gameLevel != null) {
@@ -56,6 +66,8 @@ public class GameWindow {
             if (monster != null) {
                 monsterNameLabel.setText(monster.getName());
                 monsterHpField.setText(Integer.toString((int) monster.getHealth()) + "/" + Integer.toString((int) monster.getMaxHealth()));
+                monsterHpBar.setMaximum((int) (double) monster.getMaxHealth());
+                monsterHpBar.setValue((int) (double) monster.getHealth());
             }
         }
     }
