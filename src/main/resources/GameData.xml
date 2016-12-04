@@ -35,7 +35,6 @@
         <Dexterity>12</Dexterity>
         <Intelligence>12</Intelligence>
 
-        <PrimaryStat>Intelligence</PrimaryStat>
     </Race>
     <Race identifier="ORC">
         <Name>Orc</Name>
@@ -47,6 +46,7 @@
         <Vitality>9</Vitality>
         <Dexterity>9</Dexterity>
         <Intelligence>15</Intelligence>
+
     </Race>
     <Race identifier="ELF">
         <Name>Elf</Name>
@@ -58,6 +58,7 @@
         <Vitality>15</Vitality>
         <Dexterity>15</Dexterity>
         <Intelligence>9</Intelligence>
+
     </Race>
 
     <!-- Classes -->
@@ -85,6 +86,8 @@
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>2</IntelligencePerLevel>
 
+        <PrimaryStat>Intelligence</PrimaryStat>
+
         <RaceRestriction>
             <Race>HUMAN</Race>
             <Race>ELF</Race>
@@ -102,6 +105,8 @@
         <VitalityPerLevel>0</VitalityPerLevel>
         <DexterityPerLevel>1</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
+
+        <PrimaryStat>Strenght</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -122,6 +127,8 @@
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
+        <PrimaryStat>Strenght</PrimaryStat>
+
         <RaceRestriction>
             <Race>HUMAN</Race>
             <Race>ORC</Race>
@@ -133,10 +140,14 @@
         <VitalityPerLevel>3</VitalityPerLevel>
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
+
+        <PrimaryStat>Strenght</PrimaryStat>
+
         <RaceRestriction>
             <Race>HUMAN</Race>
             <Race>ORC</Race>
         </RaceRestriction>
+
     </Class>
     <Class identifier="SHAMAN">
         <Name>Shaman</Name>
@@ -145,10 +156,13 @@
         <DexterityPerLevel>2</DexterityPerLevel>
         <IntelligencePerLevel>2</IntelligencePerLevel>
 
+        <PrimaryStat>StrenghIntelligence</PrimaryStat>
+
         <RaceRestriction>
             <Race>HUMAN</Race>
             <Race>ORC</Race>
         </RaceRestriction>
+
     </Class>
     <Class identifier="WIZARD">
         <Name>Wizard</Name>
@@ -156,6 +170,8 @@
         <VitalityPerLevel>0</VitalityPerLevel>
         <DexterityPerLevel>0</DexterityPerLevel>
         <IntelligencePerLevel>4</IntelligencePerLevel>
+
+        <PrimaryStat>Intelligence</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -169,6 +185,8 @@
         <DexterityPerLevel>3</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
+        <PrimaryStat>Dexterity</PrimaryStat>
+
         <RaceRestriction>
             <Race>HUMAN</Race>
             <Race>ELF</Race>
@@ -180,6 +198,8 @@
         <VitalityPerLevel>0</VitalityPerLevel>
         <DexterityPerLevel>1</DexterityPerLevel>
         <IntelligencePerLevel>0</IntelligencePerLevel>
+
+        <PrimaryStat>Strenght</PrimaryStat>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -213,10 +233,16 @@
         <HealthPerLevel>3</HealthPerLevel>
     </Monster>
 
+    <Monster identifier="DRAKE">
+    <Name>Drake</Name>
+    <DamagePerLevel>3</DamagePerLevel>
+    <HealthPerLevel>3</HealthPerLevel>
+
+
     <Monster identifier="BOSS">
         <Name>Boss</Name>
-        <DamagePerLevel>4</DamagePerLevel>
-        <HealthPerLevel>4</HealthPerLevel>
+        <DamagePerLevel>5</DamagePerLevel>
+        <HealthPerLevel>5</HealthPerLevel>
     </Monster>
 
 
