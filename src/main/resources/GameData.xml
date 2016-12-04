@@ -162,6 +162,9 @@
 
         <PrimaryStat>Strength</PrimaryStat>
 
+        <AllowClassTransfer>true</AllowClassTransfer>
+        <ClassTransferLevel>5</ClassTransferLevel>
+
         <RaceRestriction>
             <Race>HUMAN</Race>
             <Race>ORC</Race>
@@ -180,6 +183,9 @@
         <IntelligencePerLevel>8</IntelligencePerLevel>
 
         <PrimaryStat>Intelligence</PrimaryStat>
+
+        <AllowClassTransfer>true</AllowClassTransfer>
+        <ClassTransferLevel>5</ClassTransferLevel>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -200,6 +206,9 @@
         <IntelligencePerLevel>0</IntelligencePerLevel>
 
         <PrimaryStat>Strength</PrimaryStat>
+
+        <AllowClassTransfer>true</AllowClassTransfer>
+        <ClassTransferLevel>5</ClassTransferLevel>
 
         <RaceRestriction>
             <Race>HUMAN</Race>
@@ -340,7 +349,7 @@
     <Monster identifier="BOSS">
         <Name>Boss</Name>
         <DamagePerLevel>3</DamagePerLevel>
-        <HealthPerLevel>70</HealthPerLevel>
+        <HealthPerLevel>55</HealthPerLevel>
         <ExperiencePerLevel>5</ExperiencePerLevel>
 
     </Monster>
