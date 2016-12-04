@@ -15,7 +15,6 @@ import java.util.StringTokenizer;
 public class GameUIController {
 
     private static final String ATTACK_COMMAND = "attack";
-    private static final String SPELL_COMMAND = "spell";
     private static final String NEXT_LEVEL_COMMAND = "next-level";
     private static final String STATUS_COMMAND = "status";
     private static final String EXIT_COMMAND = "exit";
@@ -65,11 +64,7 @@ public class GameUIController {
                 gameManager.performTurn();
 
                 break;
-            case SPELL_COMMAND:
-                handleSpell(tokenizer);
-                gameManager.performTurn();
 
-                break;
             case NEXT_LEVEL_COMMAND:
                 nextLevel(tokenizer);
 //                gameManager.performTurn();
@@ -95,15 +90,6 @@ public class GameUIController {
         character.attack();
     }
 
-    private void handleSpell(final StringTokenizer commandTokenizer) throws IOException {
-        final String commandLine = reader.readLine();
-        final int spellIndex = Integer.parseInt(commandLine);
-
-//        switch (spellIndex) {
-//
-//        }
-    }
-
     private void nextLevel(final StringTokenizer tokenizer) {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
         if (!map.getCurrentLevel().isComplete()) {
@@ -115,7 +101,7 @@ public class GameUIController {
 
     private void handleStatus(final StringTokenizer tokenizer) {
         final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        System.out.println("Character: " + character.getName());
+        System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
         System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(character.getHealth()));
         System.out.println("\tEnergy: " + NumberFormat.getNumberInstance().format(character.getEnergy()));
 

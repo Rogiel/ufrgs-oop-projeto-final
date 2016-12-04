@@ -37,7 +37,13 @@ public class Main {
         System.out.print("Character name: ");
         final String name = reader.readLine();
 
-        final GamePlayer player = factory.createPlayer("HUMAN", "BERSERK");
+        System.out.print("Choose your Race (HUMAN - RACE-B - RACE-C): ");
+        final String race = reader.readLine();
+
+        System.out.print("Choose your Class (WARRIOR - WIZARD - ROGUE): ");
+        final String classe = reader.readLine();
+
+        final GamePlayer player = factory.createPlayer(race, classe);
         if(!name.isEmpty()) {
             player.setName(name);
         }
