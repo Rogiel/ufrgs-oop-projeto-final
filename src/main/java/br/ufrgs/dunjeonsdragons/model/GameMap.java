@@ -119,6 +119,7 @@ public class GameMap extends GameObject {
         // create the next level
         if (currentLevelIndex >= template.getLevels().size()) {
             state = State.MAP_COMPLETE;
+            currentLevelIndex = template.getLevels().size() - 1;
             return;
         }
 
@@ -138,6 +139,10 @@ public class GameMap extends GameObject {
      * Advances to the next map
      */
     public void nextMap() {
+        if(this.level == template.getMaxLevels()) {
+            state = State.VICTORY;
+            return;
+        }
         this.level++;
         resetMap();
     }
@@ -197,5 +202,9 @@ public class GameMap extends GameObject {
 
     public int getCurrentLevelIndex() {
         return currentLevelIndex;
+    }
+
+    public MapTemplate getTemplate() {
+        return template;
     }
 }

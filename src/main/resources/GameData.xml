@@ -35,7 +35,7 @@
 <Data>
 
     <!-- Maps -->
-    <Map identifier="TOWER_1" level="1" nextMap="TOWER_2">
+    <Map identifier="TOWER_1" maxMapLevels="10">
 
         <Level identifier="FIRST_LEVEL" name="The First Level">
             <Monsters>

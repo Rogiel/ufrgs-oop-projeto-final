@@ -43,13 +43,6 @@ import java.util.List;
 public class MapTemplate extends Template {
 
     /**
-     * The map level (the level the monster will inherit)
-     */
-    @XmlAttribute(name = "nextMap")
-    @XmlIDREF
-    private MapTemplate nextMap;
-
-    /**
      * The levels on the map
      */
     @XmlElements({
@@ -57,10 +50,16 @@ public class MapTemplate extends Template {
     })
     private List<LevelTemplate> levels;
 
+    /**
+     *
+     */
+    @XmlAttribute(name = "maxMapLevels")
+    private int maxLevels;
+
     // -----------------------------------------------------------------------------------------------------------------
 
-    public MapTemplate getNextMap() {
-        return nextMap;
+    public int getMaxLevels() {
+        return maxLevels;
     }
 
     public List<LevelTemplate> getLevels() {

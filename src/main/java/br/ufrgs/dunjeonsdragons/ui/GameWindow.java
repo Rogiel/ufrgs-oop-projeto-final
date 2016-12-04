@@ -100,10 +100,10 @@ public class GameWindow {
 
         nextMapButton.setEnabled(gameMap.getState() == GameMap.State.MAP_COMPLETE);
 
-        maxTowerLevel.setText("10");
+        maxTowerLevel.setText(Integer.toString(gameMap.getTemplate().getMaxLevels()));
         currentTowerLevel.setText(Integer.toString((int) gameMap.getMapLevel()));
 
-        towerAscencionBar.setMaximum(10);
+        towerAscencionBar.setMaximum(gameMap.getTemplate().getMaxLevels());
         towerAscencionBar.setValue((int) gameMap.getMapLevel());
 
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
