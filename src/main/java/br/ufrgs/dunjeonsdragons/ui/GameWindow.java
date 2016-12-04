@@ -35,6 +35,7 @@ public class GameWindow {
     private JButton resetMapButton;
     private JLabel monsterDamageField;
     private JLabel playerDamageField;
+    private JProgressBar towerAscencionBar;
 
     private final GameManager gameManager;
 
@@ -68,6 +69,9 @@ public class GameWindow {
         gameProgressBar.setValue(gameMap.getCurrentLevelIndex());
 
         nextMapButton.setEnabled(gameMap.getState() == GameMap.State.MAP_COMPLETE);
+
+        towerAscencionBar.setMaximum(10);
+        // towerAscencionBar.setValue( ?? );
 
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         if (gameLevel != null && gameLevel.getMonster() != null) {
