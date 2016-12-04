@@ -100,7 +100,7 @@ public class GameUIController {
         final GameLevel gameLevel = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         final GameMonster monster = gameLevel.getMonster();
 
-        while(!monster.isDead()) {
+        while (!monster.isDead()) {
             handleAttack(tokenizer);
         }
         handleStatus(tokenizer);
@@ -115,7 +115,7 @@ public class GameUIController {
             gameLevel.getMonster().attack(player); // mob attacks player
         }
 
-        if(gameLevel.isComplete()) {
+        if (gameLevel.isComplete()) {
             final GameMap gameMap = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
             gameMap.nextLevel();
         }
@@ -154,10 +154,11 @@ public class GameUIController {
         final GameLevel level = (GameLevel) gameManager.getEntity(GameLevel.DEFAULT_LEVEL_ENTITY_NAME);
         if (level != null) {
             final GameMonster monster = level.getMonster();
-            System.out.println("Monster: " + monster.getName());
             if (monster == null) {
+                System.out.println("Monster:");
                 System.out.println("\tNo monster on current level");
             } else {
+                System.out.println("Monster: " + monster.getName());
                 System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(monster.getHealth()));
                 System.out.println("\tDamage: " + monster.getDamage());
             }

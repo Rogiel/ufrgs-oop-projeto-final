@@ -7,6 +7,7 @@ import br.ufrgs.dunjeonsdragons.template.*;
 import br.ufrgs.dunjeonsdragons.template.loader.TemplateLoader;
 import br.ufrgs.dunjeonsdragons.template.loader.XMLTemplateLoader;
 
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -17,7 +18,20 @@ public class GameEntityFactory {
     /**
      * The template loader instance
      */
-    public TemplateLoader loader = new XMLTemplateLoader(Main.class.getClassLoader().getResource("GameData.xml"));
+    public TemplateLoader loader;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Creates a new GameEntityFactory instance
+     *
+     * @param dataFile the datafile path
+     */
+    public GameEntityFactory(URL dataFile) {
+        loader = new XMLTemplateLoader(dataFile);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
 
     /**
      * Creates a new player object from the given classIdentifier template identifier

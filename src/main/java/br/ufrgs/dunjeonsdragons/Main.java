@@ -15,7 +15,9 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException, IOException {
-        final GameEntityFactory factory = new GameEntityFactory();
+        final GameEntityFactory factory = new GameEntityFactory(
+                Main.class.getResource("GameData.xml")
+        );
         final GameManager gameManager = new GameManager();
 
         System.out.print("Welcome To DunJeons & Dragons! \n\n~~~ AQUI VAI A LISTA DE COMANDOS ~~~\n\n");
