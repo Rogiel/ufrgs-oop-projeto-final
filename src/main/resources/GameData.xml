@@ -270,7 +270,16 @@
     </Monster>
 
     <ExperienceTable>
-        <Entry level="1" experience="1" />
+        <Entry level="1" experience="0" />
+        <Entry level="2" experience="14" />
+        <Entry level="3" experience="54" />
+        <Entry level="4" experience="138" />
+        <Entry level="5" experience="298" />
+        <Entry level="6" experience="580" />
+        <Entry level="7" experience="1060" />
+        <Entry level="8" experience="1850" />
+        <Entry level="9" experience="3130" />
+        <Entry level="10" experience="5166" />
     </ExperienceTable>
 
 </Data>
