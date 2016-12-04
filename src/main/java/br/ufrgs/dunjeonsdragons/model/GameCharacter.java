@@ -35,6 +35,12 @@ public abstract class GameCharacter extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public abstract double getMaxHealth();
+
+    public void resetHealth() {
+        setHealth(getMaxHealth());
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
 
     public abstract double getDamage();

@@ -47,6 +47,7 @@ public class GamePlayer extends GameCharacter {
     public GamePlayer(PlayerRaceTemplate raceTemplate, PlayerClassTemplate classTemplate) {
         this.raceTemplate = raceTemplate;
         this.classTemplate = classTemplate;
+        resetHealth();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -67,6 +68,11 @@ public class GamePlayer extends GameCharacter {
             default:
                 return 0;
         }
+    }
+
+    @Override
+    public double getMaxHealth() {
+        return getVitality();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -94,7 +100,7 @@ public class GamePlayer extends GameCharacter {
 
     protected void levelUp() {
         level += 1;
-        setHealth(getVitality());
+        resetHealth();
         // TODO check for the maximum level
     }
 

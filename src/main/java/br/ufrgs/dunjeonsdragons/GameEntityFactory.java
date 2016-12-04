@@ -27,6 +27,19 @@ public class GameEntityFactory {
      * @return a newly created GamePlayer object
      */
     public GamePlayer createPlayer(String raceIdentifier, String classIdentifier) {
+        final PlayerRaceTemplate raceTemplate = (PlayerRaceTemplate) loader.load(raceIdentifier);
+        final PlayerClassTemplate classTemplate = (PlayerClassTemplate) loader.load(classIdentifier);
+
+        if(raceTemplate == null) {
+            // TODO use a proper exception here
+            throw new RuntimeException("Invalid race template");
+        }
+
+        if(classTemplate == null) {
+            // TODO use a proper exception here
+            throw new RuntimeException("Invalid class template");
+        }
+
         return new GamePlayer(
                 (PlayerRaceTemplate) loader.load(raceIdentifier),
                 (PlayerClassTemplate) loader.load(classIdentifier)
