@@ -9,11 +9,6 @@ import java.util.List;
  */
 public class GameCharacter extends GameObject {
 
-    /**
-     * A list of the currently active skills for the player
-     */
-    private List<GameSkill> skills;
-
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -40,23 +35,7 @@ public class GameCharacter extends GameObject {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Create a new game character
-     */
-    public GameCharacter() {
-        skills = new ArrayList<>();
-    }
-
     // -----------------------------------------------------------------------------------------------------------------
-
-    public void castSkill(GameSkill skill) {
-        if (!this.skills.contains(skill)) {
-            throw new RuntimeException();
-            // TODO throw a proper error
-        }
-
-        skill.cast(this, Collections.singletonList(target));
-    }
 
     public void attack() {
         if (target == null) {

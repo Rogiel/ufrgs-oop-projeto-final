@@ -51,10 +51,6 @@ public class GamePlayer extends GameCharacter {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void castSkill(GameSkill skill) {
-        // TODO implement this
-    }
-
     public void attack() {
         if (target == null) {
             throw new RuntimeException("No target");

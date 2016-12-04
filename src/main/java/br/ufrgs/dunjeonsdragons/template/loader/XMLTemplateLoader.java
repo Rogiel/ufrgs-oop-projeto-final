@@ -61,7 +61,6 @@ public class XMLTemplateLoader implements TemplateLoader {
                 @XmlElement(name = "Race", type = PlayerRaceTemplate.class),
                 @XmlElement(name = "Class", type = PlayerClassTemplate.class),
                 @XmlElement(name = "Monster", type = MonsterTemplate.class),
-                @XmlElement(name = "Skill", type = SkillTemplate.class),
                 @XmlElement(name = "Map", type = MapTemplate.class),
         })
         List<Template> templates;
