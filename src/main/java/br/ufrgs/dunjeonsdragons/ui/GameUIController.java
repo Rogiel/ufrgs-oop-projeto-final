@@ -18,7 +18,7 @@ public class GameUIController {
     private static final String NEXT_LEVEL_COMMAND = "next-level";
     private static final String STATUS_COMMAND = "status";
     private static final String EXIT_COMMAND = "exit";
-
+    private static final String SHOW_EXPERIENCE = "experience";
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -66,6 +66,9 @@ public class GameUIController {
             case STATUS_COMMAND:
                 handleStatus(tokenizer);
                 break;
+
+            case SHOW_EXPERIENCE:
+                return false;
 
             case EXIT_COMMAND:
                 return false;
