@@ -50,7 +50,8 @@ public class GameUIController {
         final String commandLine = reader.readLine();
         final StringTokenizer tokenizer = new StringTokenizer(commandLine);
 
-        final String command = tokenizer.nextToken();
+        final String command = tokenizer.nextToken().toLowerCase();
+
         switch (command) {
             case ATTACK_COMMAND:
                 handleAttack(tokenizer);
