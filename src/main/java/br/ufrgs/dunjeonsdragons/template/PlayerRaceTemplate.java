@@ -1,7 +1,10 @@
 package br.ufrgs.dunjeonsdragons.template;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 /**
  * Created by Rogiel on 9/13/16.
@@ -67,6 +70,16 @@ public class PlayerRaceTemplate extends Template {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    /**
+     * The class intelligence per level
+     */
+    @XmlElementWrapper(name = "StartingClasses")
+    @XmlElement(name = "Class")
+    @XmlIDREF
+    private List<PlayerClassTemplate> startingClasses;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     public String getName() {
         return name;
     }
@@ -117,4 +130,7 @@ public class PlayerRaceTemplate extends Template {
         return intelligencePerLevel;
     }
 
+    public List<PlayerClassTemplate> getStartingClasses() {
+        return startingClasses;
+    }
 }

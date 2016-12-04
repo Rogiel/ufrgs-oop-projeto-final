@@ -78,7 +78,14 @@ public class GamePlayer extends GameCharacter {
     // -----------------------------------------------------------------------------------------------------------------
 
     public void transferClass(PlayerClassTemplate newClassTemplate) {
+
         // TODO implement a check to assert if the player can transfer classes
+
+        if (!classTemplate.getSubclasses().contains(newClassTemplate)) {
+            // TODO use a proper exception
+            throw new RuntimeException("The player cannot transfer to the class " + newClassTemplate.getName());
+        }
+
         classTemplate = newClassTemplate;
     }
 

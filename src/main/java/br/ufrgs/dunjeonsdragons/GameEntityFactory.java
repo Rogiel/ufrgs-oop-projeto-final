@@ -30,14 +30,18 @@ public class GameEntityFactory {
         final PlayerRaceTemplate raceTemplate = (PlayerRaceTemplate) loader.load(raceIdentifier);
         final PlayerClassTemplate classTemplate = (PlayerClassTemplate) loader.load(classIdentifier);
 
-        if(raceTemplate == null) {
+        if (raceTemplate == null) {
             // TODO use a proper exception here
             throw new RuntimeException("Invalid race template");
         }
 
-        if(classTemplate == null) {
+        if (classTemplate == null) {
             // TODO use a proper exception here
             throw new RuntimeException("Invalid class template");
+        }
+
+        if (!classTemplate.getRaceRestrictions().contains(raceTemplate)) {
+            throw new RuntimeException("The race " + raceIdentifier + " cannot be of class " + classIdentifier);
         }
 
         return new GamePlayer(

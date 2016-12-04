@@ -35,6 +35,12 @@
         <Dexterity>12</Dexterity>
         <Intelligence>12</Intelligence>
 
+        <StartingClasses>
+            <Class>WARRIOR</Class>
+            <Class>MAGE</Class>
+            <Class>ROGUE</Class>
+        </StartingClasses>
+
     </Race>
     <Race identifier="ORC">
         <Name>Orc</Name>
@@ -47,6 +53,11 @@
         <Dexterity>9</Dexterity>
         <Intelligence>15</Intelligence>
 
+        <StartingClasses>
+            <Class>WARRIOR</Class>
+            <Class>MAGE</Class>
+        </StartingClasses>
+
     </Race>
     <Race identifier="ELF">
         <Name>Elf</Name>
@@ -58,6 +69,11 @@
         <Vitality>15</Vitality>
         <Dexterity>15</Dexterity>
         <Intelligence>9</Intelligence>
+
+        <StartingClasses>
+            <Class>MAGE</Class>
+            <Class>ROGUE</Class>
+        </StartingClasses>
 
     </Race>
 
