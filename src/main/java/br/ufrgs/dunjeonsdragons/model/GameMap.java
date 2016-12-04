@@ -141,6 +141,7 @@ public class GameMap extends GameObject {
     public void nextMap() {
         if(this.level == template.getMaxLevels()) {
             state = State.VICTORY;
+            System.out.println("Congratulations! You have completed the DunJeons&Dragons!");
             return;
         }
         this.level++;
