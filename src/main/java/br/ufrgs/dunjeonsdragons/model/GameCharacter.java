@@ -24,11 +24,6 @@ public abstract class GameCharacter extends GameObject {
     private double health;
 
     /**
-     * The amount of energy on the character
-     */
-    private double energy;
-
-    /**
      * A flag indicating if the target is dead
      */
     private boolean dead = false;
@@ -89,17 +84,6 @@ public abstract class GameCharacter extends GameObject {
             dead = true;
         }
         this.health = health;
-    }
-
-    public double getEnergy() {
-        return energy;
-    }
-
-    public void setEnergy(double energy) {
-        if (energy < 0) {
-            energy = 0;
-        }
-        this.energy = energy;
     }
 
     public boolean isDead() {
