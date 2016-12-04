@@ -122,7 +122,7 @@ public class GameUIController {
 
     private void handleStatus(final StringTokenizer tokenizer) {
         final GamePlayer character = (GamePlayer) gameManager.getEntity(GamePlayer.DEFAULT_PLAYER_ENTITY_NAME);
-        System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName());
+        System.out.println("Character: " + character.getName() + ", Race: " + character.getRaceTemplate().getName() + ", Classe: " + character.getClassTemplate().getName() + " Level: " + character.getLevel());
         System.out.println("\tHealth: " + NumberFormat.getNumberInstance().format(character.getHealth()));
         System.out.println("\tDamage: " + NumberFormat.getNumberInstance().format(character.getDamage()));
 
