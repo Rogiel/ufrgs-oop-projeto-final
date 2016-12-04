@@ -45,10 +45,10 @@ public class GameUIController {
 
     public boolean handleUserInput() throws IOException {
         final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
-//        if (map != null && map.getState() != GameMap.State.RUNNING) {
-//            System.out.println("Game over.");
-//            return true;
-//        }
+        if (map != null && map.getState() == GameMap.State.DEFEAT) {
+            System.out.println("You lose. Game over.");
+            return true;
+        }
 
         final String commandLine = reader.readLine();
         final StringTokenizer tokenizer = new StringTokenizer(commandLine);

@@ -23,12 +23,11 @@ public class GameMonster extends GameCharacter {
      * Create a new monster instance
      *
      * @param template create the monster from the given template
-     * @param level    the monter level
+     * @param level    the monster level
      */
     public GameMonster(final MonsterTemplate template, final int level) {
         this.template = template;
         this.level = level;
-        setHealth(template.getHealthPerLevel() * level);
         resetHealth();
     }
 
