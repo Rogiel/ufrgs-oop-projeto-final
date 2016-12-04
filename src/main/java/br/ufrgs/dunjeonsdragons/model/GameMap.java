@@ -118,6 +118,13 @@ public class GameMap extends GameObject {
      */
     public void nextMap() {
         this.level++;
+        resetMap();
+    }
+
+    /**
+     * Resets the map
+     */
+    public void resetMap() {
         currentLevelIndex = -1;
         nextLevel();
     }

@@ -41,7 +41,7 @@ public class GamePlayer extends GameCharacter {
     /**
      * The player level
      */
-    private int level;
+    private int level = 1;
 
     /**
      * The player experience
@@ -105,7 +105,7 @@ public class GamePlayer extends GameCharacter {
     public void addExperience(long experienceToAdd) {
         this.experience += experienceToAdd;
         for (ExperienceTableEntry entry : experienceTable) {
-            if (entry.getExperience() >= this.experience && this.level < entry.getLevel()) {
+            if (this.experience >= entry.getExperience() && this.level < entry.getLevel()) {
                 this.level = (int) entry.getLevel();
             }
         }

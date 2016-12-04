@@ -17,6 +17,7 @@ public class GameUIController {
     private static final String ATTACK_COMMAND = "attack";
     private static final String NEXT_LEVEL_COMMAND = "next-level";
     private static final String NEXT_MAP_COMMAND = "next-map";
+    private static final String RESET_MAP_COMMAND = "reset-map";
     private static final String STATUS_COMMAND = "status";
     private static final String EXIT_COMMAND = "exit";
     private static final String SHOW_EXPERIENCE = "experience";
@@ -66,6 +67,9 @@ public class GameUIController {
                 break;
             case NEXT_MAP_COMMAND:
                 nextMap(tokenizer);
+                break;
+            case RESET_MAP_COMMAND:
+                resetMap(tokenizer);
                 break;
 
             case STATUS_COMMAND:
@@ -118,6 +122,11 @@ public class GameUIController {
             return;
         }
         map.nextMap();
+    }
+
+    private void resetMap(final StringTokenizer tokenizer) {
+        final GameMap map = (GameMap) gameManager.getEntity(GameMap.DEFAULT_MAP_ENTITY_NAME);
+        map.resetMap();
     }
 
     private void handleStatus(final StringTokenizer tokenizer) {
